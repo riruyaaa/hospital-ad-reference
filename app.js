@@ -77,13 +77,9 @@ function renderCards() {
       </div>
     `;
     const thumb = card.querySelector(".card-thumb");
-    thumb.addEventListener("click", () => playInline(thumb, r["YouTube ID"]));
+    thumb.addEventListener("click", () => window.open(r["링크"], "_blank"));
     cardGrid.appendChild(card);
   });
-}
-
-function playInline(thumbEl, videoId) {
-  thumbEl.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
 }
 
 function fmtPrice(r) {
