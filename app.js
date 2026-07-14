@@ -63,6 +63,7 @@ function renderCards() {
     const card = document.createElement("div");
     card.className = "card";
 
+    const isShorts = r["형식"] === "Shorts";
     const thumbHtml = hasLocal
       ? `<video class="local-video" src="videos/${r["No"]}.mp4" poster="${thumbUrl(r["YouTube ID"])}" controls preload="none"></video>
          <span class="badge-format">${r["형식"] || ""}</span>`
@@ -71,7 +72,7 @@ function renderCards() {
          <span class="play-icon">▶</span>`;
 
     card.innerHTML = `
-      <div class="card-thumb${hasLocal ? " has-video" : ""}">
+      <div class="card-thumb${hasLocal ? " has-video" : ""}${isShorts ? " is-shorts" : ""}">
         ${thumbHtml}
       </div>
       <div class="card-body">
