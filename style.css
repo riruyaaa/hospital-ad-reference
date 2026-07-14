@@ -107,6 +107,11 @@ main { max-width: 1180px; margin: 0 auto; padding: 24px; }
   overflow: hidden;
 }
 
+.card-thumb.is-shorts {
+  aspect-ratio: 9/16;
+  max-height: 480px;
+}
+
 .card-thumb img {
   width: 100%;
   height: 100%;
