@@ -197,6 +197,9 @@ function renderCriteria() {
 }
 
 // ---------- 견적 요청 폼 ----------
+// Vercel 배포 후 실제 URL로 업데이트하세요
+const SMS_API_URL = 'https://REPLACE-WITH-VERCEL-URL.vercel.app/api/contact';
+
 const requestForm = document.getElementById("requestForm");
 if (requestForm) {
   requestForm.addEventListener("submit", async (e) => {
@@ -205,16 +208,22 @@ if (requestForm) {
     btn.textContent = "전송 중...";
     btn.disabled = true;
 
-    const res = await fetch(requestForm.action, {
-      method: "POST",
-      body: new FormData(requestForm),
-      headers: { Accept: "application/json" },
-    });
+    const data = Object.fromEntries(new FormData(requestForm).entries());
 
-    if (res.ok) {
-      requestForm.style.display = "none";
-      document.getElementById("formSuccess").style.display = "block";
-    } else {
+    try {
+      const res = await fetch(SMS_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        requestForm.style.display = "none";
+        document.getElementById("formSuccess").style.display = "block";
+      } else {
+        throw new Error();
+      }
+    } catch {
       btn.textContent = "오류가 발생했어요. 다시 시도해주세요.";
       btn.disabled = false;
     }
