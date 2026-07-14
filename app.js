@@ -14,11 +14,12 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
 });
 
 // ---------- 갤러리 ----------
-const cardGrid = document.getElementById("cardGrid");
-const searchInput = document.getElementById("searchInput");
+const longformGrid = document.getElementById("longformGrid");
+const shortsGrid   = document.getElementById("shortsGrid");
+const searchInput  = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
 const formatFilter = document.getElementById("formatFilter");
-const resultCount = document.getElementById("resultCount");
+const resultCount  = document.getElementById("resultCount");
 
 const categories = [...new Set(refs.map(r => r["분류"]).filter(Boolean))].sort();
 categories.forEach(cat => {
@@ -34,8 +35,37 @@ function thumbUrl(id) {
   return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 }
 
+function makeCard(r) {
+  const isShorts = r["형식"] === "Shorts";
+  const card = document.createElement("div");
+  card.className = "card";
+
+  const thumbHtml = `
+    <video class="local-video" src="videos/${r["No"]}.mp4"
+      poster="${thumbUrl(r["YouTube ID"])}" controls preload="none"></video>
+    <span class="badge-format">${r["형식"] || ""}</span>`;
+
+  card.innerHTML = `
+    <div class="card-thumb${isShorts ? " is-shorts" : ""}">
+      ${thumbHtml}
+    </div>
+    <div class="card-body">
+      <div class="card-cat">${r["분류"] || ""}</div>
+      <p class="card-title">${r["영상/레퍼런스명"] || ""}</p>
+      <p class="card-memo">${r["메모/활용 포인트"] || ""}</p>
+      <div class="card-meta">
+        <span class="tag">촬영 ${r["촬영 필요도"] || "-"}</span>
+        <span class="tag">AI ${r["AI 활용도"] || "-"}</span>
+        <span class="tag muted">${r["제작 기간"] || "-"}</span>
+      </div>
+      <div class="card-price">${fmtPrice(r)}</div>
+    </div>
+  `;
+  return card;
+}
+
 function renderCards() {
-  const q = searchInput.value.trim().toLowerCase();
+  const q   = searchInput.value.trim().toLowerCase();
   const cat = categoryFilter.value;
   const fmt = formatFilter.value;
 
@@ -50,50 +80,22 @@ function renderCards() {
     return true;
   });
 
+  const longforms = filtered.filter(r => r["형식"] !== "Shorts");
+  const shorts    = filtered.filter(r => r["형식"] === "Shorts");
+
   resultCount.textContent = `${filtered.length}개 결과`;
-  cardGrid.innerHTML = "";
 
-  if (filtered.length === 0) {
-    cardGrid.innerHTML = `<div class="no-result">조건에 맞는 레퍼런스가 없어요.</div>`;
-    return;
-  }
+  longformGrid.innerHTML = longforms.length === 0
+    ? `<div class="no-result">해당하는 Long-form 영상이 없어요.</div>` : "";
+  shorts.length === 0
+    ? (shortsGrid.innerHTML = `<div class="no-result">해당하는 Shorts 영상이 없어요.</div>`)
+    : (shortsGrid.innerHTML = "");
 
-  filtered.forEach(r => {
-    const hasLocal = LOCAL_VIDEOS.has(r["No"]);
-    const card = document.createElement("div");
-    card.className = "card";
+  longforms.forEach(r => longformGrid.appendChild(makeCard(r)));
+  shorts.forEach(r => shortsGrid.appendChild(makeCard(r)));
 
-    const isShorts = r["형식"] === "Shorts";
-    const thumbHtml = hasLocal
-      ? `<video class="local-video" src="videos/${r["No"]}.mp4" poster="${thumbUrl(r["YouTube ID"])}" controls preload="none"></video>
-         <span class="badge-format">${r["형식"] || ""}</span>`
-      : `<img src="${thumbUrl(r["YouTube ID"])}" alt="${r["영상/레퍼런스명"] || ""}" loading="lazy">
-         <span class="badge-format">${r["형식"] || ""}</span>
-         <span class="play-icon">▶</span>`;
-
-    if (isShorts) card.classList.add("is-shorts");
-    card.innerHTML = `
-      <div class="card-thumb${hasLocal ? " has-video" : ""}${isShorts ? " is-shorts" : ""}">
-        ${thumbHtml}
-      </div>
-      <div class="card-body">
-        <div class="card-cat">${r["분류"] || ""}</div>
-        <p class="card-title">${r["영상/레퍼런스명"] || ""}</p>
-        <p class="card-memo">${r["메모/활용 포인트"] || ""}</p>
-        <div class="card-meta">
-          <span class="tag">촬영 ${r["촬영 필요도"] || "-"}</span>
-          <span class="tag">AI ${r["AI 활용도"] || "-"}</span>
-          <span class="tag muted">${r["제작 기간"] || "-"}</span>
-        </div>
-        <div class="card-price">${fmtPrice(r)}</div>
-      </div>
-    `;
-
-    if (!hasLocal) {
-      card.querySelector(".card-thumb").addEventListener("click", () => window.open(r["링크"], "_blank"));
-    }
-    cardGrid.appendChild(card);
-  });
+  document.getElementById("longformCount").textContent = `${longforms.length}개`;
+  document.getElementById("shortsCount").textContent   = `${shorts.length}개`;
 }
 
 function fmtPrice(r) {
