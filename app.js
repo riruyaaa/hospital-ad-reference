@@ -40,6 +40,7 @@ function renderCards() {
   const fmt = formatFilter.value;
 
   const filtered = refs.filter(r => {
+    if (!LOCAL_VIDEOS.has(r["No"])) return false;
     if (cat && r["분류"] !== cat) return false;
     if (fmt && r["형식"] !== fmt) return false;
     if (q) {
