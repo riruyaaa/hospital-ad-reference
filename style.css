@@ -144,12 +144,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 24px; }
   aspect-ratio: 9/16;
 }
 
-.card.is-shorts {
-  max-width: 280px;
-  justify-self: center;
-}
-
-.card.is-shorts .local-video {
+.card-thumb.is-shorts .local-video {
   object-fit: contain;
 }
 
