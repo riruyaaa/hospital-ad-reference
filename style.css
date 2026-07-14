@@ -142,12 +142,6 @@ main { max-width: 1180px; margin: 0 auto; padding: 24px; }
   pointer-events: none;
 }
 
-.card-thumb iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-}
 
 .card-body { padding: 14px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
 
