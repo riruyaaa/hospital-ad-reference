@@ -326,6 +326,114 @@ th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align:
 
 th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 
+/* 견적 요청 탭 */
+.request-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.request-header { text-align: center; margin-bottom: 28px; }
+.request-header h2 { margin: 0 0 8px; font-size: 22px; }
+.request-header p  { margin: 0; color: var(--muted); font-size: 14px; }
+
+.request-form { display: flex; flex-direction: column; gap: 18px; }
+
+.form-row.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.req { color: #e05c8a; }
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  color: var(--text);
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-group textarea { resize: vertical; }
+
+.check-group { flex-direction: row; align-items: flex-start; }
+
+.checkbox-label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  font-weight: 400 !important;
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.checkbox-label small { color: var(--muted); }
+
+.submit-btn {
+  padding: 14px;
+  background: linear-gradient(135deg, #4f6bf2, #7c4ff2);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.submit-btn:hover { opacity: 0.88; }
+
+.form-success {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #4f6bf2, #7c4ff2);
+  color: #fff;
+  font-size: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.form-success h3 { margin: 0 0 8px; font-size: 20px; }
+.form-success p  { color: var(--muted); margin: 0; }
+
 @media (max-width: 600px) {
   .step-row { grid-template-columns: 1fr; }
+  .form-row.two-col { grid-template-columns: 1fr; }
 }
