@@ -109,7 +109,15 @@ main { max-width: 1180px; margin: 0 auto; padding: 24px; }
 
 .card-thumb.is-shorts {
   aspect-ratio: 9/16;
-  max-height: 480px;
+}
+
+.card.is-shorts {
+  max-width: 280px;
+  justify-self: center;
+}
+
+.card.is-shorts .local-video {
+  object-fit: contain;
 }
 
 .card-thumb img {
