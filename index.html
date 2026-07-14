@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>병원 광고 영상 레퍼런스</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <h1>병원 광고 영상 레퍼런스</h1>
+  <p class="subtitle">레퍼런스 영상과 견적 정보를 한눈에</p>
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="gallery">레퍼런스 갤러리</button>
+    <button class="tab-btn" data-tab="estimate">견적 정보</button>
+  </nav>
+</header>
+
+<main>
+  <!-- 갤러리 탭 -->
+  <section id="gallery" class="tab-panel active">
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="제목, 키워드로 검색...">
+      <select id="categoryFilter"><option value="">전체 분류</option></select>
+      <select id="formatFilter">
+        <option value="">전체 형식</option>
+        <option value="Long-form">Long-form</option>
+        <option value="Shorts">Shorts</option>
+      </select>
+      <span id="resultCount" class="result-count"></span>
+    </div>
+    <div id="cardGrid" class="card-grid"></div>
+  </section>
+
+  <!-- 견적 정보 탭 -->
+  <section id="estimate" class="tab-panel">
+    <div class="stat-row" id="statRow"></div>
+
+    <h2>활용 메모</h2>
+    <div class="memo-grid" id="memoGrid"></div>
+
+    <h2>패키지별 단가표</h2>
+    <div id="packageAccordion" class="package-accordion"></div>
+
+    <h2>견적 산정 기준</h2>
+    <div class="table-wrap">
+      <table id="criteriaTable">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
