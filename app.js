@@ -196,6 +196,31 @@ function renderCriteria() {
   `).join("");
 }
 
+// ---------- 견적 요청 폼 ----------
+const requestForm = document.getElementById("requestForm");
+if (requestForm) {
+  requestForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = requestForm.querySelector(".submit-btn");
+    btn.textContent = "전송 중...";
+    btn.disabled = true;
+
+    const res = await fetch(requestForm.action, {
+      method: "POST",
+      body: new FormData(requestForm),
+      headers: { Accept: "application/json" },
+    });
+
+    if (res.ok) {
+      requestForm.style.display = "none";
+      document.getElementById("formSuccess").style.display = "block";
+    } else {
+      btn.textContent = "오류가 발생했어요. 다시 시도해주세요.";
+      btn.disabled = false;
+    }
+  });
+}
+
 // ---------- init ----------
 renderCards();
 renderStats();
