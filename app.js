@@ -58,13 +58,20 @@ function renderCards() {
   }
 
   filtered.forEach(r => {
+    const hasLocal = LOCAL_VIDEOS.has(r["No"]);
     const card = document.createElement("div");
     card.className = "card";
+
+    const thumbHtml = hasLocal
+      ? `<video class="local-video" src="videos/${r["No"]}.mp4" poster="${thumbUrl(r["YouTube ID"])}" controls preload="none"></video>
+         <span class="badge-format">${r["형식"] || ""}</span>`
+      : `<img src="${thumbUrl(r["YouTube ID"])}" alt="${r["영상/레퍼런스명"] || ""}" loading="lazy">
+         <span class="badge-format">${r["형식"] || ""}</span>
+         <span class="play-icon">▶</span>`;
+
     card.innerHTML = `
-      <div class="card-thumb" data-id="${r["YouTube ID"]}">
-        <img src="${thumbUrl(r["YouTube ID"])}" alt="${r["영상/레퍼런스명"] || ""}" loading="lazy">
-        <span class="badge-format">${r["형식"] || ""}</span>
-        <span class="play-icon">▶</span>
+      <div class="card-thumb${hasLocal ? " has-video" : ""}">
+        ${thumbHtml}
       </div>
       <div class="card-body">
         <div class="card-cat">${r["분류"] || ""}</div>
@@ -78,8 +85,10 @@ function renderCards() {
         <div class="card-price">${fmtPrice(r)}</div>
       </div>
     `;
-    const thumb = card.querySelector(".card-thumb");
-    thumb.addEventListener("click", () => window.open(r["링크"], "_blank"));
+
+    if (!hasLocal) {
+      card.querySelector(".card-thumb").addEventListener("click", () => window.open(r["링크"], "_blank"));
+    }
     cardGrid.appendChild(card);
   });
 }
