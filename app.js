@@ -71,6 +71,7 @@ function renderCards() {
          <span class="badge-format">${r["형식"] || ""}</span>
          <span class="play-icon">▶</span>`;
 
+    if (isShorts) card.classList.add("is-shorts");
     card.innerHTML = `
       <div class="card-thumb${hasLocal ? " has-video" : ""}${isShorts ? " is-shorts" : ""}">
         ${thumbHtml}
