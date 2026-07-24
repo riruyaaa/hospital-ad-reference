@@ -249,7 +249,17 @@ if (requestForm) {
 
 // ---------- init ----------
 renderCards();
-renderStats();
-renderMemos();
 renderPackages();
-renderCriteria();
+
+document.getElementById("pkgDetailBtn").addEventListener("click", function () {
+  const wrap = document.getElementById("packageDetailWrap");
+  const open = wrap.style.display === "none";
+  wrap.style.display = open ? "block" : "none";
+  this.textContent = open
+    ? "전체 제작 유형별 상세 견적 닫기 −"
+    : "전체 제작 유형별 상세 견적 보기 +";
+});
+
+document.getElementById("goRequestBtn").addEventListener("click", function () {
+  document.querySelector('[data-tab="request"]').click();
+});
