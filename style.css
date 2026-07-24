@@ -220,12 +220,39 @@ main { max-width: 1180px; margin: 0 auto; padding: 24px; }
 .tag.muted { background: #f1f2f6; color: var(--muted); }
 
 .card-price {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   border-top: 1px dashed var(--border);
   padding-top: 8px;
 }
+.price-tier-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-bottom: 2px;
+  width: fit-content;
+}
+.price-tier-badge.tier-basic    { background: #f0f4ff; color: #4f6bf2; }
+.price-tier-badge.tier-standard { background: #4f6bf2; color: #fff; }
+.price-tier-badge.tier-premium  { background: #7c4ff2; color: #fff; }
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 13px;
+}
+.price-tag {
+  font-size: 11px;
+  color: var(--muted);
+  min-width: 26px;
+}
+.price-row strong { color: var(--text); font-weight: 700; }
+.price-max { color: var(--muted); }
+.price-consult { font-size: 13px; color: var(--muted); }
 
 .no-result { color: var(--muted); padding: 40px; text-align: center; grid-column: 1/-1; }
 
