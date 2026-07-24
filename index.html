@@ -50,61 +50,150 @@
 
   <!-- 견적 정보 탭 -->
   <section id="estimate" class="tab-panel">
-    <div class="stat-row" id="statRow"></div>
 
+    <!-- 인트로 -->
+    <div class="estimate-intro">
+      <h2 class="estimate-intro-title">병원 영상 제작, 예산에 맞춰 선택할 수 있습니다</h2>
+      <p class="estimate-intro-desc">기존 병원 자산을 활용한 숏폼부터<br>원장님 출연 광고, 병원 브랜딩 영상,<br>극장·지하철·옥외 캠페인까지<br>목적과 예산에 맞게 제작 범위를 구성합니다.</p>
+    </div>
+
+    <!-- 예산별 추천 -->
+    <div class="budget-section">
+      <h2 class="est-section-title">예산별로 이런 영상이 가능합니다</h2>
+      <div class="budget-grid">
+        <div class="budget-card">
+          <div class="budget-range">300~500만원</div>
+          <div class="budget-items">숏폼 · 타이포 · 무빙포스터 · 간단한 AI 광고</div>
+        </div>
+        <div class="budget-card">
+          <div class="budget-range">500~800만원</div>
+          <div class="budget-items">원장님 출연 숏폼 · AI 광고 · 일반 광고 영상</div>
+        </div>
+        <div class="budget-card">
+          <div class="budget-range">800~1,200만원</div>
+          <div class="budget-items">병원 소개 · 시술 브랜딩 · 고퀄리티 롱폼</div>
+        </div>
+        <div class="budget-card">
+          <div class="budget-range">1,200만원 이상</div>
+          <div class="budget-items">병원 브랜딩 · 개원 캠페인 · 극장·지하철·옥외광고</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 패키지 티어 -->
     <div class="tier-section">
       <h2 class="tier-heading">제작 패키지 안내</h2>
       <div class="tier-grid">
         <div class="tier-card tier-basic">
           <div class="tier-label">BASIC</div>
           <div class="tier-price">400만원~</div>
+          <p class="tier-desc">SNS 광고부터<br>기존 병원 자산을 활용한 AI 영상까지</p>
           <ul class="tier-list">
-            <li>숏폼 광고 (SNS·릴스·쇼츠)</li>
-            <li>AI 자산 활용 롱폼</li>
-            <li>무빙포스터·타이포 모션</li>
-            <li>소셜미디어 중심 단기 노출 소재</li>
+            <li>숏폼 광고</li>
+            <li>타이포/모션</li>
+            <li>AI 자산 활용</li>
+            <li>무빙포스터</li>
           </ul>
           <div class="tier-note">VAT 별도 · 촬영 포함 시 변동</div>
         </div>
         <div class="tier-card tier-standard">
-          <div class="tier-badge">인기</div>
+          <div class="tier-badge">가장 많이 선택</div>
           <div class="tier-label">STANDARD</div>
           <div class="tier-price">700만원~</div>
+          <p class="tier-desc">원장님 출연부터<br>병원 핵심 시술·브랜드 광고까지</p>
           <ul class="tier-list">
-            <li>원장·모델 출연 롱폼</li>
-            <li>일반 롱폼·참여유도형 광고</li>
-            <li>정보전달/시술소개 영상</li>
-            <li>상담 전환 + 브랜드 인지 병행</li>
+            <li>원장님 출연 광고</li>
+            <li>시술소개 영상</li>
+            <li>일반 롱폼 광고</li>
+            <li>AI 활용 광고</li>
           </ul>
           <div class="tier-note">VAT 별도 · 모델료·헤메 별도 가능</div>
         </div>
         <div class="tier-card tier-premium">
           <div class="tier-label">PREMIUM</div>
           <div class="tier-price">1,200만원~</div>
+          <p class="tier-desc">병원 브랜딩부터<br>개원 캠페인·옥외광고까지</p>
           <ul class="tier-list">
-            <li>브랜딩·병원소개 필름</li>
-            <li>티저·개원 전 캠페인</li>
-            <li>극장·지하철·옥외 광고</li>
-            <li>음악·댄스 광고 (CM송 포함)</li>
+            <li>병원 브랜딩 영상</li>
+            <li>개원 광고</li>
+            <li>극장/지하철/옥외광고</li>
+            <li>음악/댄스 캠페인</li>
           </ul>
           <div class="tier-note">VAT 별도 · 매체 집행비 별도</div>
         </div>
       </div>
     </div>
 
-    <h2>활용 메모</h2>
-    <div class="memo-grid" id="memoGrid"></div>
-
-    <h2>패키지별 단가표</h2>
-    <div id="packageAccordion" class="package-accordion"></div>
-
-    <h2>견적 산정 기준</h2>
-    <div class="table-wrap">
-      <table id="criteriaTable">
-        <thead></thead>
-        <tbody></tbody>
-      </table>
+    <!-- 촬영 없이도? -->
+    <div class="no-shoot-box">
+      <div class="no-shoot-icon">💡</div>
+      <div class="no-shoot-body">
+        <strong>촬영 없이도 제작할 수 있나요?</strong>
+        <p>네. 병원 시설, 의료진, 장비 등의 기존 사진과 영상을 활용해 AI 영상, 무빙포스터, 타이포 광고 형태로 제작할 수 있습니다.<br>실제 촬영이 꼭 필요한 경우와 기존 자산만으로 제작 가능한 경우를 구분해 제안합니다.</p>
+      </div>
     </div>
+
+    <!-- 대표 유형 요약 -->
+    <div class="pkg-summary-section">
+      <h2 class="est-section-title">대표 제작 유형별 예상 비용</h2>
+      <table class="pkg-summary-table">
+        <thead>
+          <tr><th>제작 유형</th><th>예상 제작비</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>숏폼 광고</td><td>150~450만원</td></tr>
+          <tr><td>AI 활용 광고</td><td>180~900만원</td></tr>
+          <tr><td>원장님 출연 광고</td><td>350~1,500만원</td></tr>
+          <tr><td>일반 병원 광고</td><td>450~1,000만원</td></tr>
+          <tr><td>병원 브랜딩 영상</td><td>800~1,800만원</td></tr>
+          <tr><td>개원·극장·옥외 캠페인 <span class="media-note">매체 집행비 별도</span></td><td>900~2,000만원+</td></tr>
+        </tbody>
+      </table>
+      <button class="pkg-detail-btn" id="pkgDetailBtn">전체 제작 유형별 상세 견적 보기 +</button>
+      <div id="packageDetailWrap" style="display:none; margin-top:16px;">
+        <div id="packageAccordion" class="package-accordion"></div>
+      </div>
+    </div>
+
+    <!-- 제작비 요소 -->
+    <div class="factors-section">
+      <h2 class="est-section-title">제작비가 달라지는 주요 요소</h2>
+      <div class="factors-grid">
+        <div class="factor-card">
+          <div class="factor-icon">🎬</div>
+          <div class="factor-title">촬영 규모</div>
+          <div class="factor-desc">촬영일수, 촬영 장소, 의료진 및 모델 출연 여부</div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-icon">✨</div>
+          <div class="factor-title">콘텐츠 난이도</div>
+          <div class="factor-desc">AI 생성, 모션그래픽, 3D, 시술 그래픽 사용 정도</div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-icon">📦</div>
+          <div class="factor-title">영상 수량</div>
+          <div class="factor-desc">메인 영상과 함께 제작하는 숏폼 및 파생 콘텐츠 수</div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-icon">📡</div>
+          <div class="factor-title">활용 매체</div>
+          <div class="factor-desc">YouTube, Shorts, Instagram, DID, 극장, 지하철, 옥외광고 등</div>
+        </div>
+        <div class="factor-card">
+          <div class="factor-icon">🎭</div>
+          <div class="factor-title">추가 제작</div>
+          <div class="factor-desc">모델, 헤어메이크업, 성우, 음악, 특수장비 등</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="est-cta-section">
+      <h3 class="est-cta-title">아직 어떤 영상을 만들어야 할지 모르셔도 괜찮습니다.</h3>
+      <p class="est-cta-desc">진료과목, 예산, 광고 목적을 알려주시면<br>병원에 맞는 영상 형식과 제작 범위를 제안드립니다.</p>
+      <button class="est-cta-btn" id="goRequestBtn">우리 병원 영상 견적 상담하기</button>
+    </div>
+
   </section>
 </main>
 
