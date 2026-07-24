@@ -198,7 +198,7 @@ function renderCriteria() {
 
 // ---------- 견적 요청 폼 ----------
 // Vercel 배포 후 실제 URL로 업데이트하세요
-const SMS_API_URL = 'https://REPLACE-WITH-VERCEL-URL.vercel.app/api/contact';
+const SMS_API_URL = 'https://homepage-mu-ebon.vercel.app/api/contact';
 
 const requestForm = document.getElementById("requestForm");
 if (requestForm) {
