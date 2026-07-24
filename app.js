@@ -103,11 +103,23 @@ function renderCards() {
   document.getElementById("shortsCount").textContent   = `${shorts.length}개`;
 }
 
+function tierLabel(min) {
+  if (min == null) return null;
+  if (min >= 1200) return { label: "PREMIUM", cls: "tier-premium" };
+  if (min >= 700)  return { label: "STANDARD", cls: "tier-standard" };
+  return { label: "BASIC", cls: "tier-basic" };
+}
+
 function fmtPrice(r) {
   const min = r["최소 견적(만원)"];
   const max = r["최대 견적(만원)"];
-  if (min == null || max == null) return "견적 문의";
-  return `${min}~${max}만원`;
+  if (min == null || max == null) return `<span class="price-consult">견적 문의</span>`;
+  const tier = tierLabel(min);
+  return `
+    <span class="price-tier-badge ${tier.cls}">${tier.label}</span>
+    <span class="price-row"><span class="price-tag">기본</span><strong>${min.toLocaleString()}만원~</strong></span>
+    <span class="price-row"><span class="price-tag">최대</span><span class="price-max">${max.toLocaleString()}만원</span></span>
+  `;
 }
 
 [searchInput, categoryFilter, formatFilter].forEach(el =>
