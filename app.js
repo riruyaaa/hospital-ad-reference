@@ -95,92 +95,111 @@ function thumbUrl(id) {
   return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
 }
 
-function tierLabel(min) {
-  if (min == null) return null;
-  if (min >= 1200) return { label: 'PREMIUM', cls: 'tier-premium' };
-  if (min >= 700)  return { label: 'STANDARD', cls: 'tier-standard' };
-  return { label: 'BASIC', cls: 'tier-basic' };
-}
-
-function fmtPrice(r) {
+function fmtPriceSimple(r) {
   const min = r['최소 견적(만원)'];
   const max = r['최대 견적(만원)'];
-  if (min == null || max == null) return `<span class="price-consult">견적 문의</span>`;
-  const tier = tierLabel(min);
-  return `
-    <span class="price-tier-badge ${tier.cls}">${tier.label}</span>
-    <span class="price-row"><span class="price-tag">기본</span><strong>${min.toLocaleString()}만원~</strong></span>
-    <span class="price-row"><span class="price-tag">최대</span><span class="price-max">${max.toLocaleString()}만원</span></span>
-  `;
+  if (min == null) return '견적 문의';
+  return `${min.toLocaleString()}~${max ? max.toLocaleString() : '?'}만원`;
 }
 
-function makeCard(r) {
-  const isShorts = r['형식'] === 'Shorts';
-  const card = document.createElement('div');
-  card.className = 'card';
+// ── 호버: 뷰포트 중앙으로 이동 + 확대 ─────────────────────────
+function applyHover(card) {
+  card.style.animationPlayState = 'paused';
+  card.classList.add('hovered');
 
-  const videoNum = r['No'];
-  const prodType = PKG_TYPE_MAP[r['견적 패키지']] || r['견적 패키지'] || '';
-  const shootVal = (r['촬영 필요도'] || '').includes('없음') ? '촬영 없음' : '촬영 있음';
+  const rect = card.getBoundingClientRect();
+  const cx = window.innerWidth / 2;
+  const cy = window.innerHeight / 2;
+  const dx = cx - (rect.left + rect.width / 2);
+  const dy = cy - (rect.top + rect.height / 2);
+  const scale = card.classList.contains('is-shorts') ? 2.0 : 1.75;
+
+  card.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
+  card.style.zIndex = '500';
+
+  const track = card.closest('.covers-track');
+  if (track) {
+    track.querySelectorAll('.gallery-cover').forEach(s => {
+      if (s !== card) { s.style.opacity = '0.28'; s.style.filter = 'blur(1.5px)'; }
+    });
+  }
+}
+
+function resetHover(card) {
+  card.classList.remove('hovered');
+  card.style.transform = '';
+  card.style.zIndex = '';
+  card.style.animationPlayState = '';
+
+  const track = card.closest('.covers-track');
+  if (track) {
+    track.querySelectorAll('.gallery-cover').forEach(s => {
+      s.style.opacity = ''; s.style.filter = '';
+    });
+  }
+}
+
+// ── Cover 카드 생성 ───────────────────────────────────────────
+function makeCover(r, idx) {
+  const isShorts = r['형식'] === 'Shorts';
+  const cover = document.createElement('div');
+  cover.className = `gallery-cover floating${isShorts ? ' is-shorts' : ''}`;
+  cover.setAttribute('role', 'listitem');
+  cover.setAttribute('aria-label', r['영상/레퍼런스명'] || `영상 ${r['No']}`);
+  // 각 카드마다 다른 타이밍으로 둥둥 떠오름
+  cover.style.animationDelay = `${(idx % 9) * 0.32}s`;
+
+  // 미디어
+  const media = document.createElement('div');
+  media.className = 'cover-media';
 
   const video = document.createElement('video');
-  video.className = 'local-video';
-  video.src = `videos/${videoNum}.mp4`;
+  video.src = `videos/${r['No']}.mp4`;
   video.poster = thumbUrl(r['YouTube ID']);
-  video.controls = true;
   video.preload = 'none';
-  video.setAttribute('aria-label', r['영상/레퍼런스명'] || `영상 ${videoNum}`);
-  video.addEventListener('error', () => {
-    const placeholder = document.createElement('div');
-    placeholder.style.cssText = 'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#1a1a2e;color:#aaa;font-size:13px;text-align:center;padding:16px;';
-    placeholder.textContent = '영상을 불러올 수 없습니다';
-    video.replaceWith(placeholder);
-  });
+  video.playsInline = true;
+  video.muted = true;
+  video.setAttribute('aria-label', r['영상/레퍼런스명'] || '');
+  video.addEventListener('error', () => { media.style.background = '#1a1a2e'; });
+  media.appendChild(video);
 
-  const thumbWrap = document.createElement('div');
-  thumbWrap.className = `card-thumb${isShorts ? ' is-shorts' : ''} card-thumb-wrap`;
-  thumbWrap.appendChild(video);
-
-  const formatBadge = document.createElement('span');
-  formatBadge.className = 'badge-format';
-  formatBadge.textContent = r['형식'] || '';
-  thumbWrap.appendChild(formatBadge);
-
-  const refBadge = document.createElement('span');
-  refBadge.className = `ref-badge${r['직접제작'] ? ' direct' : ''}`;
-  refBadge.textContent = r['직접제작'] ? '직접 제작 사례' : '참고 레퍼런스';
-  thumbWrap.appendChild(refBadge);
-
-  const body = document.createElement('div');
-  body.className = 'card-body';
-  body.innerHTML = `
-    <div class="card-cat">${r['분류'] || ''}</div>
-    ${prodType ? `<div class="card-type">${prodType}</div>` : ''}
-    <p class="card-title">${r['영상/레퍼런스명'] || ''}</p>
-    <p class="card-memo">${r['메모/활용 포인트'] || ''}</p>
-    <div class="card-meta">
-      <span class="tag">${shootVal}</span>
-      <span class="tag">AI ${r['AI 활용도'] || '-'}</span>
-      <span class="tag muted">${r['제작 기간'] || '-'}</span>
+  // 오버레이 (호버 시 표시)
+  const overlay = document.createElement('div');
+  overlay.className = 'cover-overlay';
+  overlay.innerHTML = `
+    <div class="cover-overlay-cat">${r['분류'] || ''}</div>
+    <div class="cover-overlay-title">${r['영상/레퍼런스명'] || ''}</div>
+    <div class="cover-overlay-price">${fmtPriceSimple(r)}</div>
+    <div class="cover-overlay-actions">
+      <button class="cover-btn-play">보기</button>
+      <button class="cover-btn-quote">견적받기</button>
     </div>
-    <div class="card-price">${fmtPrice(r)}</div>
   `;
 
-  const quoteBtn = document.createElement('button');
-  quoteBtn.className = 'card-quote-btn';
-  quoteBtn.textContent = '이 영상 스타일로 견적받기';
-  quoteBtn.setAttribute('aria-label', `${r['영상/레퍼런스명']} 스타일로 견적받기`);
-  quoteBtn.addEventListener('click', (e) => {
+  cover.appendChild(media);
+  cover.appendChild(overlay);
+
+  // 재생 버튼
+  overlay.querySelector('.cover-btn-play').addEventListener('click', e => {
+    e.stopPropagation();
+    if (video.paused) { video.controls = true; video.muted = false; video.play(); }
+    else { video.pause(); video.currentTime = 0; }
+  });
+
+  // 견적받기 버튼
+  overlay.querySelector('.cover-btn-quote').addEventListener('click', e => {
     e.stopPropagation();
     const refInput = document.getElementById('f-reference');
-    if (refInput) refInput.value = `No.${videoNum} - ${r['영상/레퍼런스명'] || ''}`;
+    if (refInput) refInput.value = `No.${r['No']} - ${r['영상/레퍼런스명'] || ''}`;
+    resetHover(cover);
     switchTab('request');
   });
-  body.appendChild(quoteBtn);
 
-  card.appendChild(thumbWrap);
-  card.appendChild(body);
-  return card;
+  // 호버 이벤트
+  cover.addEventListener('mouseenter', () => applyHover(cover));
+  cover.addEventListener('mouseleave', () => resetHover(cover));
+
+  return cover;
 }
 
 function getActiveFilterCount() {
