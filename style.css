@@ -559,7 +559,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 
 /* 인트로 배너 */
 .estimate-intro {
-  background: linear-gradient(135deg, #4f6bf2 0%, #7c4ff2 100%);
+  background: #1a1a2e;
   color: #fff;
   border-radius: var(--radius);
   padding: 36px 32px;
