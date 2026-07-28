@@ -139,6 +139,123 @@ function resetHover(card) {
   }
 }
 
+// ── 영상 라이트박스 ───────────────────────────────────────────
+let _lbRef = null;
+
+function openLightbox(r) {
+  _lbRef = r;
+  const lb      = document.getElementById('videoLightbox');
+  const vid     = document.getElementById('vlbVideo');
+  const content = document.getElementById('vlbContent');
+  const isShorts = r['형식'] === 'Shorts';
+
+  vid.src    = `videos/${r['No']}.mp4`;
+  vid.poster = thumbUrl(r['YouTube ID']);
+  document.getElementById('vlbCat').textContent   = r['분류'] || '';
+  document.getElementById('vlbTitle').textContent = r['영상/레퍼런스명'] || '';
+  document.getElementById('vlbPrice').textContent = fmtPriceSimple(r);
+  content.classList.toggle('is-shorts', isShorts);
+
+  lb.hidden = false;
+  document.body.style.overflow = 'hidden';
+  vid.play().catch(() => {});
+}
+
+function closeLightbox() {
+  const lb  = document.getElementById('videoLightbox');
+  const vid = document.getElementById('vlbVideo');
+  vid.pause();
+  vid.src = '';
+  lb.hidden = true;
+  _lbRef = null;
+  if (document.getElementById('fullviewOverlay').hidden) document.body.style.overflow = '';
+}
+
+document.getElementById('vlbBackdrop').addEventListener('click', closeLightbox);
+document.getElementById('vlbClose').addEventListener('click', closeLightbox);
+document.getElementById('vlbQuote').addEventListener('click', () => {
+  if (_lbRef) {
+    const fi = document.getElementById('f-reference');
+    if (fi) fi.value = `No.${_lbRef['No']} - ${_lbRef['영상/레퍼런스명'] || ''}`;
+  }
+  closeLightbox();
+  closeFullView();
+  switchTab('request');
+});
+
+// ── 전체보기 오버레이 ─────────────────────────────────────────
+function openFullView(format) {
+  const overlay = document.getElementById('fullviewOverlay');
+  const grid    = document.getElementById('fullviewGrid');
+  const isShorts = format === 'shorts';
+
+  document.getElementById('fullviewTitle').textContent = isShorts ? 'Shorts 전체보기' : 'Long-form 전체보기';
+
+  const items = refs.filter(r =>
+    LOCAL_VIDEOS.has(r['No']) &&
+    (isShorts ? r['형식'] === 'Shorts' : r['형식'] !== 'Shorts')
+  );
+  document.getElementById('fullviewCnt').textContent = `${items.length}개`;
+
+  grid.className = `fullview-grid${isShorts ? ' shorts-grid' : ''}`;
+  grid.innerHTML = '';
+  items.forEach(r => grid.appendChild(makeFullViewCard(r)));
+
+  overlay.hidden = false;
+  overlay.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFullView() {
+  const overlay = document.getElementById('fullviewOverlay');
+  overlay.hidden = true;
+  if (document.getElementById('videoLightbox').hidden) document.body.style.overflow = '';
+}
+
+function makeFullViewCard(r) {
+  const isShorts = r['형식'] === 'Shorts';
+  const card = document.createElement('div');
+  card.className = `fvc${isShorts ? ' fvc-shorts' : ''}`;
+  card.innerHTML = `
+    <div class="fvc-media">
+      <img src="${thumbUrl(r['YouTube ID'])}" alt="${r['영상/레퍼런스명'] || ''}">
+      <div class="fvc-hover-overlay">
+        <button class="fvc-play-btn">▶ 재생</button>
+        <button class="fvc-qbtn">견적받기</button>
+      </div>
+    </div>
+    <div class="fvc-info">
+      <span class="fvc-cat">${r['분류'] || ''}</span>
+      <div class="fvc-title">${r['영상/레퍼런스명'] || ''}</div>
+      <div class="fvc-price">${fmtPriceSimple(r)}</div>
+    </div>
+  `;
+  card.querySelector('.fvc-play-btn').addEventListener('click', e => {
+    e.stopPropagation();
+    openLightbox(r);
+  });
+  card.querySelector('.fvc-qbtn').addEventListener('click', e => {
+    e.stopPropagation();
+    const fi = document.getElementById('f-reference');
+    if (fi) fi.value = `No.${r['No']} - ${r['영상/레퍼런스명'] || ''}`;
+    closeFullView();
+    switchTab('request');
+  });
+  card.addEventListener('click', () => openLightbox(r));
+  return card;
+}
+
+document.getElementById('fullviewBack').addEventListener('click', closeFullView);
+document.getElementById('longformViewAll').addEventListener('click', () => openFullView('longform'));
+document.getElementById('shortsViewAll').addEventListener('click', () => openFullView('shorts'));
+
+// ESC 키 전역 처리
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  if (!document.getElementById('videoLightbox').hidden) closeLightbox();
+  else if (!document.getElementById('fullviewOverlay').hidden) closeFullView();
+});
+
 // ── Cover 카드 생성 ───────────────────────────────────────────
 function makeCover(r, idx) {
   const isShorts = r['형식'] === 'Shorts';
