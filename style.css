@@ -905,13 +905,13 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   color: #555;
   margin-bottom: 12px;
 }
-.shelf-stage { position: relative; padding-bottom: 14px; }
+.shelf-stage { position: relative; }
 .covers-track {
   display: flex;
   gap: 18px;
   overflow-x: auto;
   overflow-y: visible;
-  padding: 52px 0 28px;
+  padding: 64px 0 0;
   scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -923,10 +923,13 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 .covers-track::-webkit-scrollbar { display: none; }
 .covers-track.shorts-track { align-items: flex-end; }
 .shelf-board {
-  height: 14px;
-  background: linear-gradient(180deg, #ffffff 0%, #d8d2c8 100%);
-  border-radius: 4px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.2), 0 3px 8px rgba(0,0,0,0.1);
+  height: 22px;
+  background: linear-gradient(180deg, #c8bba8 0%, #a8998a 55%, #8f8070 100%);
+  border-radius: 4px 4px 6px 6px;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.28), 0 4px 10px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.45);
+  position: relative;
+  z-index: 0;
+  margin-top: -6px;
 }
 
 /* ── Gallery Cover ── */
