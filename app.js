@@ -296,11 +296,11 @@ function makeCover(r, idx) {
   cover.appendChild(media);
   cover.appendChild(overlay);
 
-  // 재생 버튼
+  // 재생 버튼 → 라이트박스 열기
   overlay.querySelector('.cover-btn-play').addEventListener('click', e => {
     e.stopPropagation();
-    if (video.paused) { video.controls = true; video.muted = false; video.play(); }
-    else { video.pause(); video.currentTime = 0; }
+    resetHover(cover);
+    openLightbox(r);
   });
 
   // 견적받기 버튼
@@ -310,6 +310,13 @@ function makeCover(r, idx) {
     if (refInput) refInput.value = `No.${r['No']} - ${r['영상/레퍼런스명'] || ''}`;
     resetHover(cover);
     switchTab('request');
+  });
+
+  // 카드 클릭 → 라이트박스 (견적 버튼 제외)
+  cover.addEventListener('click', e => {
+    if (e.target.closest('.cover-btn-quote')) return;
+    resetHover(cover);
+    openLightbox(r);
   });
 
   // 호버 이벤트
