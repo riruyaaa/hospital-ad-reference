@@ -850,6 +850,159 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 }
 
 /* ═══════════════════════════════════════
+   갤러리 섹션 — Shelf 디자인
+═══════════════════════════════════════ */
+#gallery {
+  background: #f0ede8;
+  min-height: 80vh;
+  padding: 0 24px 80px;
+  max-width: none;
+  margin: 0;
+}
+.gal-header {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 36px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.gal-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #888;
+  margin: 0 0 8px;
+}
+.gal-desc { font-size: 15px; color: #333; margin: 0; line-height: 1.5; }
+.gal-filter-row { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+.gal-filter-row #searchInput {
+  padding: 9px 16px;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: 50px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.8);
+  font-family: inherit;
+  color: #333;
+  outline: none;
+  width: 160px;
+  transition: border-color .15s, width .25s ease;
+  min-height: 40px;
+}
+.gal-filter-row #searchInput:focus {
+  border-color: var(--accent);
+  background: #fff;
+  width: 220px;
+}
+.filter-panel {
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin: 0 auto 16px;
+  max-width: 1180px;
+}
+.shelf-section { max-width: 1180px; margin: 0 auto 56px; }
+.shelf-row-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #555;
+  margin-bottom: 12px;
+}
+.shelf-stage { position: relative; padding-bottom: 14px; }
+.covers-track {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 52px 0 28px;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  position: relative;
+  z-index: 1;
+}
+.covers-track:active { cursor: grabbing; }
+.covers-track::-webkit-scrollbar { display: none; }
+.covers-track.shorts-track { align-items: flex-end; }
+.shelf-board {
+  height: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #d8d2c8 100%);
+  border-radius: 4px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2), 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* ── Gallery Cover ── */
+@keyframes float-card {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+.gallery-cover {
+  position: relative;
+  flex-shrink: 0;
+  width: 240px;
+  scroll-snap-align: start;
+  cursor: pointer;
+  z-index: 1;
+  will-change: transform;
+  transition: transform 0.45s cubic-bezier(0.34, 1.15, 0.64, 1),
+              opacity 0.3s ease,
+              filter 0.3s ease;
+}
+.gallery-cover.is-shorts { width: 140px; }
+.gallery-cover.floating { animation: float-card 3.2s ease-in-out infinite; }
+.cover-media {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 48px rgba(0,0,0,0.28), 0 4px 12px rgba(0,0,0,0.14);
+  background: #111;
+}
+.gallery-cover.is-shorts .cover-media { aspect-ratio: 9/16; }
+.cover-media video {
+  width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;
+}
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: linear-gradient(160deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.84) 100%);
+  color: #fff;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 5px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.gallery-cover.hovered .cover-overlay { opacity: 1; pointer-events: auto; }
+.cover-overlay-cat { font-size: 9px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.65; }
+.cover-overlay-title { font-size: 12px; font-weight: 700; line-height: 1.4; }
+.cover-overlay-price { font-size: 11px; opacity: 0.82; font-weight: 600; }
+.cover-overlay-actions { display: flex; gap: 7px; margin-top: 6px; }
+.cover-btn-play, .cover-btn-quote {
+  flex: 1; padding: 8px 6px; border-radius: 8px; font-size: 11.5px;
+  font-weight: 700; border: none; cursor: pointer; transition: opacity .15s;
+  min-height: 36px; font-family: inherit;
+}
+.cover-btn-play  { background: rgba(255,255,255,0.92); color: #1a1a2e; }
+.cover-btn-quote { background: var(--accent); color: #fff; }
+.cover-btn-play:hover, .cover-btn-quote:hover { opacity: 0.85; }
+.shelf-empty { padding: 60px 40px; color: #888; font-size: 13px; text-align: center; flex-shrink: 0; }
+
+/* ═══════════════════════════════════════
    필터 개선
 ═══════════════════════════════════════ */
 .filter-wrap { margin-bottom: 20px; }
