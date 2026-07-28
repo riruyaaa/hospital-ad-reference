@@ -860,7 +860,21 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
-.filter-top #searchInput { flex: 1; min-width: 180px; }
+.filter-top #searchInput {
+  flex: 1;
+  min-width: 180px;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  background: #fff;
+  font-family: inherit;
+  color: var(--text);
+  outline: none;
+  min-height: 44px;
+  transition: border-color .15s;
+}
+.filter-top #searchInput:focus { border-color: var(--accent); }
 .filter-toggle-btn {
   display: flex;
   align-items: center;
