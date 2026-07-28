@@ -1344,7 +1344,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 .process-prep {
   font-size: 12px;
   color: var(--muted);
-  background: #f6f7fb;
+  background: #ede8e1;
   border-radius: 8px;
   padding: 8px 12px;
   line-height: 1.6;
@@ -1581,7 +1581,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 .privacy-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
 .privacy-table th {
   width: 100px;
-  background: #f6f7fb;
+  background: #ede8e1;
   padding: 10px 14px;
   font-weight: 700;
   color: var(--text);
@@ -1598,7 +1598,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 .privacy-table tr:last-child th,
 .privacy-table tr:last-child td { border-bottom: none; }
 .success-summary {
-  background: #f6f7fb;
+  background: #ede8e1;
   border-radius: var(--radius);
   padding: 16px 20px;
   margin: 16px auto;
