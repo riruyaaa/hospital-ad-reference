@@ -652,6 +652,33 @@
   <button class="mobile-fab-btn" id="mobileFabBtn">견적 문의</button>
 </div>
 
+<!-- 전체보기 오버레이 -->
+<div id="fullviewOverlay" class="fullview-overlay" hidden>
+  <div class="fullview-bar">
+    <button class="fullview-back-btn" id="fullviewBack">← 선반으로</button>
+    <span class="fullview-title" id="fullviewTitle"></span>
+    <span class="fullview-cnt" id="fullviewCnt"></span>
+  </div>
+  <div class="fullview-grid" id="fullviewGrid"></div>
+</div>
+
+<!-- 영상 라이트박스 -->
+<div id="videoLightbox" class="video-lightbox" hidden>
+  <div class="vlb-backdrop" id="vlbBackdrop"></div>
+  <div class="vlb-content" id="vlbContent">
+    <button class="vlb-close" id="vlbClose" aria-label="닫기">✕</button>
+    <div class="vlb-player-wrap">
+      <video class="vlb-video" id="vlbVideo" controls playsinline></video>
+    </div>
+    <div class="vlb-meta">
+      <span class="vlb-cat" id="vlbCat"></span>
+      <div class="vlb-title" id="vlbTitle"></div>
+      <div class="vlb-price" id="vlbPrice"></div>
+    </div>
+    <button class="vlb-quote" id="vlbQuote">이 스타일로 견적받기 →</button>
+  </div>
+</div>
+
 <script src="data.js"></script>
 <script src="app.js"></script>
 </body>
