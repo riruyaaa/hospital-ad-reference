@@ -3,34 +3,119 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>병원 광고 영상 레퍼런스</title>
+<title>온블로그 | 병원 광고 영상 제작 전문</title>
+<meta name="description" content="병원의 강점을 환자에게 전달하는 의료 광고 영상 전문 제작사 온블로그. 기획·촬영·AI 제작·편집·매체별 변환까지 원스톱 서비스.">
+<meta property="og:title" content="온블로그 | 병원 광고 영상 제작 전문">
+<meta property="og:description" content="병원의 강점을 환자에게 전달하는 의료 광고 영상. 레퍼런스 영상과 견적 정보를 한눈에.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://homepage-mu-ebon.vercel.app">
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"온블로그","description":"병원 광고 영상 전문 제작사","url":"https://homepage-mu-ebon.vercel.app","contactPoint":{"@type":"ContactPoint","contactType":"customer service","email":"riruyaaa@gmail.com"}}
+</script>
 </head>
 <body>
 
-<header class="topbar">
-  <h1>병원 광고 영상 레퍼런스</h1>
-  <p class="subtitle">레퍼런스 영상과 견적 정보를 한눈에</p>
-  <nav class="tabs">
-    <button class="tab-btn active" data-tab="gallery">레퍼런스 갤러리</button>
-    <button class="tab-btn" data-tab="estimate">견적 정보</button>
-    <button class="tab-btn" data-tab="request">견적 요청</button>
+<!-- 히어로 -->
+<div class="hero-section">
+  <div class="hero-inner">
+    <div class="hero-brand">온블로그</div>
+    <h1 class="hero-title">병원의 강점을<br>환자에게 전달하는<br>의료 광고 영상</h1>
+    <p class="hero-desc">기획 · 촬영 · AI 제작 · 편집 · 매체별 변환<br>병원 광고 영상 전문 원스톱 제작 서비스</p>
+    <div class="hero-ctas">
+      <button class="hero-btn-primary" id="heroGalleryBtn">레퍼런스 보기</button>
+      <button class="hero-btn-secondary" id="heroRequestBtn">우리 병원 견적받기</button>
+    </div>
+    <div class="hero-tags">
+      <span>피부과</span><span>성형외과</span><span>치과</span><span>정형외과</span>
+      <span>안과</span><span>비뇨의학과</span><span>AI 광고</span><span>원장님 출연</span>
+    </div>
+  </div>
+</div>
+
+<!-- 탭 내비게이션 -->
+<header class="topbar" id="topbar">
+  <nav class="tabs" role="tablist" aria-label="메뉴">
+    <button class="tab-btn active" data-tab="gallery" role="tab" aria-selected="true">레퍼런스 갤러리</button>
+    <button class="tab-btn" data-tab="service" role="tab" aria-selected="false">서비스 안내</button>
+    <button class="tab-btn" data-tab="about" role="tab" aria-selected="false">온블로그 소개</button>
+    <button class="tab-btn" data-tab="request" role="tab" aria-selected="false">견적 요청</button>
   </nav>
 </header>
 
 <main>
+
   <!-- 갤러리 탭 -->
-  <section id="gallery" class="tab-panel active">
-    <div class="controls">
-      <input type="text" id="searchInput" placeholder="제목, 키워드로 검색...">
-      <select id="categoryFilter"><option value="">전체 분류</option></select>
-      <select id="formatFilter">
-        <option value="">전체 형식</option>
-        <option value="Long-form">Long-form</option>
-        <option value="Shorts">Shorts</option>
-      </select>
-      <span id="resultCount" class="result-count"></span>
+  <section id="gallery" class="tab-panel active" role="tabpanel">
+
+    <div class="filter-wrap">
+      <div class="filter-top">
+        <input type="text" id="searchInput" placeholder="제목, 키워드로 검색..." aria-label="검색">
+        <button class="filter-toggle-btn" id="filterToggleBtn" aria-expanded="false" aria-controls="filterPanel">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 3h13M3 7.5h9M5.5 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          필터
+          <span class="filter-badge" id="filterBadge" style="display:none">0</span>
+        </button>
+        <span id="resultCount" class="result-count" aria-live="polite"></span>
+      </div>
+
+      <div class="filter-panel" id="filterPanel" hidden>
+        <div class="filter-grid">
+          <div class="filter-group">
+            <label class="filter-label" for="categoryFilter">진료과목</label>
+            <select id="categoryFilter" aria-label="진료과목 필터"><option value="">전체</option></select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label" for="typeFilter">제작 유형</label>
+            <select id="typeFilter" aria-label="제작 유형 필터">
+              <option value="">전체</option>
+              <option value="AI 활용 광고">AI 활용 광고</option>
+              <option value="원장님 출연 광고">원장님 출연 광고</option>
+              <option value="일반 광고">일반 광고</option>
+              <option value="타이포·모션">타이포·모션</option>
+              <option value="시술소개 영상">시술소개 영상</option>
+              <option value="참여유도형">참여유도형</option>
+              <option value="브랜딩 영상">브랜딩 영상</option>
+              <option value="개원·티저 광고">개원·티저 광고</option>
+              <option value="옥외·극장 광고">옥외·극장 광고</option>
+              <option value="음악·댄스 광고">음악·댄스 광고</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label" for="formatFilter">영상 형식</label>
+            <select id="formatFilter" aria-label="영상 형식 필터">
+              <option value="">전체</option>
+              <option value="Long-form">Long-form</option>
+              <option value="Shorts">Shorts</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label" for="budgetFilter">예산 범위</label>
+            <select id="budgetFilter" aria-label="예산 범위 필터">
+              <option value="">전체</option>
+              <option value="under300">300만원 미만</option>
+              <option value="300to600">300~600만원</option>
+              <option value="600to1000">600~1,000만원</option>
+              <option value="over1000">1,000만원 이상</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label" for="shootFilter">촬영 여부</label>
+            <select id="shootFilter" aria-label="촬영 여부 필터">
+              <option value="">전체</option>
+              <option value="촬영 없음">촬영 없음 (기존 자산 활용)</option>
+              <option value="촬영 있음">촬영 있음</option>
+            </select>
+          </div>
+        </div>
+        <div class="filter-actions">
+          <button class="filter-reset-btn" id="filterResetBtn">필터 초기화</button>
+        </div>
+      </div>
+
+      <div class="active-filters" id="activeFilters" style="display:none" aria-live="polite"></div>
     </div>
+
     <div class="section-block">
       <div class="section-label">
         <span class="section-dot longform"></span> Long-form
@@ -48,10 +133,9 @@
     </div>
   </section>
 
-  <!-- 견적 정보 탭 -->
-  <section id="estimate" class="tab-panel">
+  <!-- 서비스 안내 탭 -->
+  <section id="service" class="tab-panel" role="tabpanel">
 
-    <!-- 인트로 -->
     <div class="estimate-intro">
       <h2 class="estimate-intro-title">병원 영상 제작, 예산에 맞춰 선택할 수 있습니다</h2>
       <p class="estimate-intro-desc">기존 병원 자산을 활용한 숏폼부터<br>원장님 출연 광고, 병원 브랜딩 영상,<br>극장·지하철·옥외 캠페인까지<br>목적과 예산에 맞게 제작 범위를 구성합니다.</p>
@@ -61,66 +145,86 @@
     <div class="budget-section">
       <h2 class="est-section-title">예산별로 이런 영상이 가능합니다</h2>
       <div class="budget-grid">
-        <div class="budget-card">
-          <div class="budget-range">300~500만원</div>
-          <div class="budget-items">숏폼 · 타이포 · 무빙포스터 · 간단한 AI 광고</div>
-        </div>
-        <div class="budget-card">
-          <div class="budget-range">500~800만원</div>
-          <div class="budget-items">AI 활용 롱폼 · 시술소개 영상 · 일반 광고 영상</div>
-        </div>
-        <div class="budget-card">
-          <div class="budget-range">800~1,200만원</div>
-          <div class="budget-items">병원 소개 · 시술 브랜딩 · 고퀄리티 롱폼</div>
-        </div>
-        <div class="budget-card">
-          <div class="budget-range">1,200만원 이상</div>
-          <div class="budget-items">원장님 출연 광고 · 병원 브랜딩 · 개원 캠페인 · 극장·지하철·옥외광고</div>
-        </div>
+        <div class="budget-card"><div class="budget-range">300~500만원</div><div class="budget-items">숏폼 · 타이포 · 무빙포스터 · 간단한 AI 광고</div></div>
+        <div class="budget-card"><div class="budget-range">500~800만원</div><div class="budget-items">AI 활용 롱폼 · 시술소개 영상 · 일반 광고 영상</div></div>
+        <div class="budget-card"><div class="budget-range">800~1,200만원</div><div class="budget-items">병원 소개 · 시술 브랜딩 · 고퀄리티 롱폼</div></div>
+        <div class="budget-card"><div class="budget-range">1,200만원 이상</div><div class="budget-items">원장님 출연 광고 · 병원 브랜딩 · 개원 캠페인 · 극장·지하철·옥외광고</div></div>
       </div>
     </div>
 
-    <!-- 패키지 티어 -->
+    <!-- 패키지 티어 (상세) -->
     <div class="tier-section">
-      <h2 class="tier-heading">제작 패키지 안내</h2>
-      <div class="tier-grid">
-        <div class="tier-card tier-basic">
-          <div class="tier-label">BASIC</div>
-          <div class="tier-price">400만원~</div>
-          <p class="tier-desc">SNS 광고부터<br>기존 병원 자산을 활용한 AI 영상까지</p>
-          <ul class="tier-list">
-            <li>숏폼 광고</li>
-            <li>타이포/모션</li>
-            <li>AI 자산 활용</li>
-            <li>무빙포스터</li>
+      <h2 class="est-section-title">제작 패키지 안내</h2>
+      <p class="tier-subtext">모든 가격은 예상 범위이며 VAT 별도입니다. 실제 견적은 상담 후 확정됩니다.</p>
+      <div class="tier-grid-enhanced">
+
+        <div class="tier-card-e tier-basic">
+          <div class="tce-header">
+            <div class="tce-label">BASIC</div>
+            <div class="tce-price">400만원~</div>
+            <div class="tce-desc">SNS 광고부터<br>기존 병원 자산을 활용한 AI 영상까지</div>
+          </div>
+          <ul class="tce-detail">
+            <li><span class="tce-k">추천 대상</span><span class="tce-v">SNS 광고 시작 · 기존 자산 활용 병원</span></li>
+            <li><span class="tce-k">영상 수량</span><span class="tce-v">1편 (파생본 협의)</span></li>
+            <li><span class="tce-k">영상 길이</span><span class="tce-v">30초~2분</span></li>
+            <li><span class="tce-k">촬영</span><span class="tce-v">없음 (기존 사진·영상 활용)</span></li>
+            <li><span class="tce-k">기획·대본</span><span class="tce-v">핵심 메시지·자막 기획 포함</span></li>
+            <li><span class="tce-k">편집 범위</span><span class="tce-v">모션·타이포·자막·AI 제작</span></li>
+            <li><span class="tce-k">수정 횟수</span><span class="tce-v">2회 포함 (추가 별도)</span></li>
+            <li><span class="tce-k">세로형 파생본</span><span class="tce-v">별도 협의</span></li>
+            <li><span class="tce-k">썸네일</span><span class="tce-v">미포함</span></li>
+            <li><span class="tce-k">제작 기간</span><span class="tce-v">2~4주</span></li>
           </ul>
-          <div class="tier-note">VAT 별도 · 촬영 포함 시 변동</div>
+          <div class="tce-extra"><strong>별도 비용:</strong> VAT · 촬영 추가 시 협의</div>
+          <button class="tce-cta" data-tab-target="request">이 패키지로 견적받기</button>
         </div>
-        <div class="tier-card tier-standard">
-          <div class="tier-badge">가장 많이 선택</div>
-          <div class="tier-label">STANDARD</div>
-          <div class="tier-price">700만원~</div>
-          <p class="tier-desc">시술소개부터<br>병원 핵심 광고·AI 활용 영상까지</p>
-          <ul class="tier-list">
-            <li>시술소개 영상</li>
-            <li>일반 롱폼 광고</li>
-            <li>AI 활용 광고</li>
-            <li>참여유도형 광고</li>
+
+        <div class="tier-card-e tier-standard">
+          <div class="tce-badge">가장 많이 선택</div>
+          <div class="tce-header">
+            <div class="tce-label">STANDARD</div>
+            <div class="tce-price">700만원~</div>
+            <div class="tce-desc">시술소개부터<br>병원 핵심 광고·AI 활용 영상까지</div>
+          </div>
+          <ul class="tce-detail">
+            <li><span class="tce-k">추천 대상</span><span class="tce-v">시술 홍보 · 일반 광고 영상 제작 병원</span></li>
+            <li><span class="tce-k">영상 수량</span><span class="tce-v">1~2편</span></li>
+            <li><span class="tce-k">영상 길이</span><span class="tce-v">1~3분 (롱폼) / 30~60초 (숏폼)</span></li>
+            <li><span class="tce-k">촬영</span><span class="tce-v">협의 (반일~1일)</span></li>
+            <li><span class="tce-k">기획·대본</span><span class="tce-v">스토리보드·대본 포함</span></li>
+            <li><span class="tce-k">편집 범위</span><span class="tce-v">색보정·자막·모션그래픽</span></li>
+            <li><span class="tce-k">수정 횟수</span><span class="tce-v">2회 포함 (추가 별도)</span></li>
+            <li><span class="tce-k">세로형 파생본</span><span class="tce-v">협의</span></li>
+            <li><span class="tce-k">썸네일</span><span class="tce-v">포함</span></li>
+            <li><span class="tce-k">제작 기간</span><span class="tce-v">4~6주</span></li>
           </ul>
-          <div class="tier-note">VAT 별도 · 모델료·헤메 별도 가능</div>
+          <div class="tce-extra"><strong>별도 비용:</strong> VAT · 모델료 · 헤어메이크업 · 성우 · 음악 라이선스</div>
+          <button class="tce-cta" data-tab-target="request">이 패키지로 견적받기</button>
         </div>
-        <div class="tier-card tier-premium">
-          <div class="tier-label">PREMIUM</div>
-          <div class="tier-price">1,200만원~</div>
-          <p class="tier-desc">원장님 출연 광고부터<br>병원 브랜딩·개원 캠페인까지</p>
-          <ul class="tier-list">
-            <li>원장님 출연 광고</li>
-            <li>병원 브랜딩 영상</li>
-            <li>개원 광고</li>
-            <li>극장/지하철/옥외광고</li>
+
+        <div class="tier-card-e tier-premium">
+          <div class="tce-header">
+            <div class="tce-label">PREMIUM</div>
+            <div class="tce-price">1,200만원~</div>
+            <div class="tce-desc">원장님 출연 광고부터<br>병원 브랜딩·개원 캠페인까지</div>
+          </div>
+          <ul class="tce-detail">
+            <li><span class="tce-k">추천 대상</span><span class="tce-v">원장님 출연 · 브랜딩 · 개원 캠페인 병원</span></li>
+            <li><span class="tce-k">영상 수량</span><span class="tce-v">1~3편</span></li>
+            <li><span class="tce-k">영상 길이</span><span class="tce-v">2~5분 (메인) / 30~60초 (파생)</span></li>
+            <li><span class="tce-k">촬영</span><span class="tce-v">1~2일 풀 스케일 촬영</span></li>
+            <li><span class="tce-k">기획·대본</span><span class="tce-v">전체 기획·스토리보드·대본</span></li>
+            <li><span class="tce-k">편집 범위</span><span class="tce-v">풀 편집·색보정·VFX·모션그래픽</span></li>
+            <li><span class="tce-k">수정 횟수</span><span class="tce-v">3회 포함 (추가 별도)</span></li>
+            <li><span class="tce-k">세로형 파생본</span><span class="tce-v">포함</span></li>
+            <li><span class="tce-k">썸네일</span><span class="tce-v">포함</span></li>
+            <li><span class="tce-k">제작 기간</span><span class="tce-v">6~10주</span></li>
           </ul>
-          <div class="tier-note">VAT 별도 · 매체 집행비 별도</div>
+          <div class="tce-extra"><strong>별도 비용:</strong> VAT · 모델료 · 헤어메이크업 · 성우 · 음악 라이선스 · 출장비 · 매체 집행비 · 의료광고 심의 비용</div>
+          <button class="tce-cta" data-tab-target="request">이 패키지로 견적받기</button>
         </div>
+
       </div>
     </div>
 
@@ -136,22 +240,93 @@
     <!-- 대표 유형 요약 -->
     <div class="pkg-summary-section">
       <h2 class="est-section-title">대표 제작 유형별 예상 비용</h2>
-      <table class="pkg-summary-table">
-        <thead>
-          <tr><th>제작 유형</th><th>예상 제작비</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>숏폼 광고</td><td>150~450만원</td></tr>
-          <tr><td>AI 활용 광고</td><td>180~900만원</td></tr>
-          <tr><td>원장님 출연 광고</td><td>1,200만원~</td></tr>
-          <tr><td>일반 병원 광고</td><td>450~1,000만원</td></tr>
-          <tr><td>병원 브랜딩 영상</td><td>800~1,800만원</td></tr>
-          <tr><td>개원·극장·옥외 캠페인 <span class="media-note">매체 집행비 별도</span></td><td>900~2,000만원+</td></tr>
-        </tbody>
-      </table>
+      <div class="table-wrap">
+        <table class="pkg-summary-table">
+          <thead><tr><th>제작 유형</th><th>예상 제작비</th><th>패키지</th></tr></thead>
+          <tbody>
+            <tr><td>숏폼 광고</td><td>150~450만원</td><td><span class="pkg-badge tier-basic">BASIC</span></td></tr>
+            <tr><td>AI 활용 광고</td><td>180~900만원</td><td><span class="pkg-badge tier-basic">BASIC</span></td></tr>
+            <tr><td>시술소개 영상</td><td>250~600만원</td><td><span class="pkg-badge tier-standard">STANDARD</span></td></tr>
+            <tr><td>일반 병원 광고</td><td>450~1,000만원</td><td><span class="pkg-badge tier-standard">STANDARD</span></td></tr>
+            <tr><td>원장님 출연 광고</td><td>1,200만원~</td><td><span class="pkg-badge tier-premium">PREMIUM</span></td></tr>
+            <tr><td>병원 브랜딩 영상</td><td>800~1,800만원</td><td><span class="pkg-badge tier-premium">PREMIUM</span></td></tr>
+            <tr><td>개원·극장·옥외 캠페인 <span class="media-note">매체 집행비 별도</span></td><td>900~2,000만원+</td><td><span class="pkg-badge tier-premium">PREMIUM</span></td></tr>
+          </tbody>
+        </table>
+      </div>
       <button class="pkg-detail-btn" id="pkgDetailBtn">전체 제작 유형별 상세 견적 보기 +</button>
       <div id="packageDetailWrap" style="display:none; margin-top:16px;">
         <div id="packageAccordion" class="package-accordion"></div>
+      </div>
+    </div>
+
+    <!-- 제작 과정 -->
+    <div class="process-section">
+      <h2 class="est-section-title">제작 과정</h2>
+      <div class="process-list">
+        <div class="process-step">
+          <div class="process-num" aria-hidden="true">1</div>
+          <div class="process-body">
+            <div class="process-title">상담 및 목표 확인</div>
+            <div class="process-dur">1~3일</div>
+            <div class="process-desc">병원 특성, 타깃 환자, 광고 목적을 파악합니다.</div>
+            <div class="process-prep">고객 준비: 병원 정보, 강조하고 싶은 시술 또는 강점</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-num" aria-hidden="true">2</div>
+          <div class="process-body">
+            <div class="process-title">예산·레퍼런스 제안</div>
+            <div class="process-dur">1~3일</div>
+            <div class="process-desc">예산과 목적에 맞는 레퍼런스·제작 범위를 제안합니다.</div>
+            <div class="process-prep">고객 준비: 예산 범위 결정, 선호 스타일 공유</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-num" aria-hidden="true">3</div>
+          <div class="process-body">
+            <div class="process-title">기획안·대본 작성</div>
+            <div class="process-dur">1~2주</div>
+            <div class="process-desc">스토리보드와 대본을 작성하고 확인을 받습니다.</div>
+            <div class="process-prep">고객 준비: 기획안 검토 및 피드백</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-num" aria-hidden="true">4</div>
+          <div class="process-body">
+            <div class="process-title">촬영 또는 AI 제작</div>
+            <div class="process-dur">1일~</div>
+            <div class="process-desc">확정된 기획안을 바탕으로 촬영 또는 AI 제작을 진행합니다.</div>
+            <div class="process-prep">고객 준비: 촬영 장소·일정, 출연자 준비 (촬영 시)</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-num" aria-hidden="true">5</div>
+          <div class="process-body">
+            <div class="process-title">편집 및 수정</div>
+            <div class="process-dur">2~4주</div>
+            <div class="process-desc">편집 완료 후 피드백을 반영해 수정합니다.</div>
+            <div class="process-prep">고객 준비: 1차 영상 피드백 (구체적일수록 좋아요)</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <div class="process-num" aria-hidden="true">6</div>
+          <div class="process-body">
+            <div class="process-title">최종 납품</div>
+            <div class="process-dur">1~3일</div>
+            <div class="process-desc">매체별 규격으로 변환해 최종 파일을 납품합니다.</div>
+            <div class="process-prep">고객 준비: 활용 매체별 규격 확인</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 의료광고 안내 -->
+    <div class="medical-notice">
+      <div class="medical-notice-icon" aria-hidden="true">⚖️</div>
+      <div>
+        <strong>의료광고 심의 안내</strong>
+        <p>의료광고 심의가 필요한 매체(TV, 라디오, 인터넷, 옥외광고 등)의 경우, 심의 기준을 고려해 문구와 영상 구성을 제안합니다. 심의 접수·대행 가능 범위 및 비용은 별도로 안내드립니다.</p>
       </div>
     </div>
 
@@ -159,32 +334,18 @@
     <div class="factors-section">
       <h2 class="est-section-title">제작비가 달라지는 주요 요소</h2>
       <div class="factors-grid">
-        <div class="factor-card">
-          <div class="factor-icon">🎬</div>
-          <div class="factor-title">촬영 규모</div>
-          <div class="factor-desc">촬영일수, 촬영 장소, 의료진 및 모델 출연 여부</div>
-        </div>
-        <div class="factor-card">
-          <div class="factor-icon">✨</div>
-          <div class="factor-title">콘텐츠 난이도</div>
-          <div class="factor-desc">AI 생성, 모션그래픽, 3D, 시술 그래픽 사용 정도</div>
-        </div>
-        <div class="factor-card">
-          <div class="factor-icon">📦</div>
-          <div class="factor-title">영상 수량</div>
-          <div class="factor-desc">메인 영상과 함께 제작하는 숏폼 및 파생 콘텐츠 수</div>
-        </div>
-        <div class="factor-card">
-          <div class="factor-icon">📡</div>
-          <div class="factor-title">활용 매체</div>
-          <div class="factor-desc">YouTube, Shorts, Instagram, DID, 극장, 지하철, 옥외광고 등</div>
-        </div>
-        <div class="factor-card">
-          <div class="factor-icon">🎭</div>
-          <div class="factor-title">추가 제작</div>
-          <div class="factor-desc">모델, 헤어메이크업, 성우, 음악, 특수장비 등</div>
-        </div>
+        <div class="factor-card"><div class="factor-icon" aria-hidden="true">🎬</div><div class="factor-title">촬영 규모</div><div class="factor-desc">촬영일수, 장소, 의료진 및 모델 출연 여부</div></div>
+        <div class="factor-card"><div class="factor-icon" aria-hidden="true">✨</div><div class="factor-title">콘텐츠 난이도</div><div class="factor-desc">AI 생성, 모션그래픽, 3D, 시술 그래픽 사용 정도</div></div>
+        <div class="factor-card"><div class="factor-icon" aria-hidden="true">📦</div><div class="factor-title">영상 수량</div><div class="factor-desc">메인 영상과 파생 콘텐츠(숏폼·세로형) 수</div></div>
+        <div class="factor-card"><div class="factor-icon" aria-hidden="true">📡</div><div class="factor-title">활용 매체</div><div class="factor-desc">YouTube, Shorts, Instagram, DID, 극장, 지하철, 옥외광고</div></div>
+        <div class="factor-card"><div class="factor-icon" aria-hidden="true">🎭</div><div class="factor-title">추가 제작</div><div class="factor-desc">모델, 헤어메이크업, 성우, 음악, 특수장비 등</div></div>
       </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2 class="est-section-title">자주 묻는 질문</h2>
+      <div class="faq-list" id="faqList"></div>
     </div>
 
     <!-- CTA -->
@@ -195,119 +356,287 @@
     </div>
 
   </section>
-</main>
+
+  <!-- 온블로그 소개 탭 -->
+  <section id="about" class="tab-panel" role="tabpanel">
+
+    <div class="about-hero">
+      <div class="about-brand-name">온블로그</div>
+      <h2 class="about-title">병원 광고 영상 전문 제작사</h2>
+      <p class="about-subtitle">병원의 강점을 환자에게 전달하는 영상을 만듭니다.</p>
+    </div>
+
+    <div class="about-section">
+      <h3 class="about-section-title">주요 제작 분야</h3>
+      <div class="about-fields">
+        <div class="about-field-card"><span aria-hidden="true">🏥</span><span>피부과 · 성형외과</span></div>
+        <div class="about-field-card"><span aria-hidden="true">🦷</span><span>치과 · 구강외과</span></div>
+        <div class="about-field-card"><span aria-hidden="true">👁️</span><span>안과 · 라식·라섹</span></div>
+        <div class="about-field-card"><span aria-hidden="true">🦴</span><span>정형외과 · 재활의학과</span></div>
+        <div class="about-field-card"><span aria-hidden="true">🧬</span><span>비뇨의학과 · 산부인과</span></div>
+        <div class="about-field-card"><span aria-hidden="true">💊</span><span>내과 · 가정의학과</span></div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h3 class="about-section-title">제작 실적</h3>
+      <div class="stats-grid">
+        <div class="stat-ph"><div class="stat-ph-val">—</div><div class="stat-ph-lbl">누적 제작</div><div class="stat-ph-note">입력 필요</div></div>
+        <div class="stat-ph"><div class="stat-ph-val">—</div><div class="stat-ph-lbl">협업 병원</div><div class="stat-ph-note">입력 필요</div></div>
+        <div class="stat-ph"><div class="stat-ph-val">—</div><div class="stat-ph-lbl">제작 분야</div><div class="stat-ph-note">입력 필요</div></div>
+        <div class="stat-ph"><div class="stat-ph-val">—</div><div class="stat-ph-lbl">운영 기간</div><div class="stat-ph-note">입력 필요</div></div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h3 class="about-section-title">협업 병원 · 브랜드</h3>
+      <p class="ph-note">공개 가능한 협업 병원 또는 브랜드 명칭을 이곳에 추가해주세요.</p>
+      <div class="collab-grid">
+        <div class="collab-slot">병원명 입력</div>
+        <div class="collab-slot">병원명 입력</div>
+        <div class="collab-slot">병원명 입력</div>
+        <div class="collab-slot">병원명 입력</div>
+        <div class="collab-slot">병원명 입력</div>
+        <div class="collab-slot">병원명 입력</div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h3 class="about-section-title">고객 후기</h3>
+      <div class="reviews-grid">
+        <div class="review-card"><div class="review-stars" aria-label="별점 5점">★★★★★</div><p class="review-text ph-note">고객 후기를 이곳에 입력해주세요.</p><div class="review-from">OO의원 원장님</div></div>
+        <div class="review-card"><div class="review-stars" aria-label="별점 5점">★★★★★</div><p class="review-text ph-note">고객 후기를 이곳에 입력해주세요.</p><div class="review-from">OO피부과 원장님</div></div>
+        <div class="review-card"><div class="review-stars" aria-label="별점 5점">★★★★★</div><p class="review-text ph-note">고객 후기를 이곳에 입력해주세요.</p><div class="review-from">OO치과 원장님</div></div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h3 class="about-section-title">담당자 및 연락처</h3>
+      <div class="contact-card">
+        <div class="contact-row"><span class="contact-lbl">담당자</span><span class="ph-note">담당자명 입력 필요</span></div>
+        <div class="contact-row"><span class="contact-lbl">연락처</span><span class="ph-note">전화번호 입력 필요</span></div>
+        <div class="contact-row"><span class="contact-lbl">이메일</span><span>riruyaaa@gmail.com</span></div>
+        <div class="contact-row"><span class="contact-lbl">상담 시간</span><span class="ph-note">상담 가능 시간 입력 필요</span></div>
+      </div>
+    </div>
+
+    <div class="about-section">
+      <h3 class="about-section-title">사업자 정보</h3>
+      <div class="biz-card">
+        <div class="biz-row"><span class="biz-lbl">상호명</span><span>온블로그</span></div>
+        <div class="biz-row"><span class="biz-lbl">사업자등록번호</span><span class="ph-note">입력 필요</span></div>
+        <div class="biz-row"><span class="biz-lbl">대표자</span><span class="ph-note">입력 필요</span></div>
+        <div class="biz-row"><span class="biz-lbl">소재지</span><span class="ph-note">입력 필요</span></div>
+        <div class="biz-row"><span class="biz-lbl">개인정보처리방침</span><span><a href="#" class="text-link">별도 페이지 연결 예정</a></span></div>
+      </div>
+    </div>
+
+    <div class="est-cta-section" style="margin-top:40px">
+      <h3 class="est-cta-title">지금 바로 견적을 받아보세요.</h3>
+      <p class="est-cta-desc">영업일 기준 1~2일 내 답변드립니다.</p>
+      <button class="est-cta-btn" data-tab-target="request">견적 요청하기</button>
+    </div>
+
+  </section>
 
   <!-- 견적 요청 탭 -->
-  <section id="request" class="tab-panel">
+  <section id="request" class="tab-panel" role="tabpanel">
     <div class="request-wrap">
       <div class="request-header">
         <h2>견적 요청</h2>
         <p>아래 양식을 작성해 주시면 영업일 기준 1~2일 내로 연락드립니다.</p>
       </div>
 
-      <form id="requestForm" class="request-form">
+      <form id="requestForm" class="request-form" novalidate>
 
         <div class="form-row two-col">
           <div class="form-group">
-            <label>병원명 <span class="req">*</span></label>
-            <input type="text" name="병원명" placeholder="예: 강남 OO의원" required>
+            <label for="f-hospital">병원명 <span class="req" aria-label="필수">*</span></label>
+            <input type="text" id="f-hospital" name="병원명" placeholder="예: 강남 OO의원" required autocomplete="organization">
+            <div class="field-error" id="err-hospital" role="alert"></div>
           </div>
           <div class="form-group">
-            <label>원장님 성함 <span class="req">*</span></label>
-            <input type="text" name="원장님_성함" placeholder="홍길동" required>
+            <label for="f-manager">담당자명 <span class="req" aria-label="필수">*</span></label>
+            <input type="text" id="f-manager" name="담당자명" placeholder="예: 홍길동 원장 / 김OO 실장" required autocomplete="name">
+            <div class="field-error" id="err-manager" role="alert"></div>
           </div>
         </div>
 
         <div class="form-row two-col">
           <div class="form-group">
-            <label>연락처 <span class="req">*</span></label>
-            <input type="tel" name="연락처" placeholder="010-0000-0000" required>
+            <label for="f-phone">연락처 <span class="req" aria-label="필수">*</span></label>
+            <input type="tel" id="f-phone" name="연락처" placeholder="010-0000-0000" required autocomplete="tel">
+            <div class="field-error" id="err-phone" role="alert"></div>
           </div>
           <div class="form-group">
-            <label>이메일 <span class="req">*</span></label>
-            <input type="email" name="이메일" placeholder="example@email.com" required>
+            <label for="f-email">이메일 <span class="req" aria-label="필수">*</span></label>
+            <input type="email" id="f-email" name="이메일" placeholder="example@email.com" required autocomplete="email">
+            <div class="field-error" id="err-email" role="alert"></div>
           </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f-calltime">통화 가능 시간</label>
+          <input type="text" id="f-calltime" name="통화_가능_시간" placeholder="예: 평일 오전 10시~12시, 오후 2시 이후">
         </div>
 
         <div class="form-row two-col">
           <div class="form-group">
-            <label>병원 진료과목</label>
-            <select name="진료과목">
+            <label for="f-specialty">병원 진료과목</label>
+            <select id="f-specialty" name="진료과목">
               <option value="">선택해주세요</option>
-              <option>피부과</option>
-              <option>성형외과</option>
-              <option>치과</option>
-              <option>정형외과</option>
-              <option>안과</option>
-              <option>비뇨의학과</option>
-              <option>산부인과</option>
-              <option>내과/가정의학과</option>
-              <option>기타</option>
+              <option>피부과</option><option>성형외과</option><option>치과</option>
+              <option>정형외과</option><option>안과</option><option>비뇨의학과</option>
+              <option>산부인과</option><option>내과/가정의학과</option><option>기타</option>
             </select>
           </div>
           <div class="form-group">
-            <label>희망 영상 형식</label>
-            <select name="영상_형식">
+            <label for="f-purpose">광고 목적</label>
+            <select id="f-purpose" name="광고_목적">
+              <option value="">선택해주세요</option>
+              <option>신규 환자 유입</option><option>시술·치료 소개</option>
+              <option>병원 브랜딩·인지도</option><option>개원 홍보</option>
+              <option>SNS 채널 운영</option><option>기타</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label for="f-format">희망 영상 형식</label>
+            <select id="f-format" name="영상_형식">
               <option value="">선택해주세요</option>
               <option>Long-form (1분 이상, 유튜브·홍보)</option>
               <option>Shorts (60초 이하, SNS·릴스)</option>
-              <option>둘 다 필요</option>
-              <option>아직 모름</option>
+              <option>둘 다 필요</option><option>아직 모름</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-count">필요한 영상 수</label>
+            <select id="f-count" name="영상_수량">
+              <option value="">선택해주세요</option>
+              <option>1편</option><option>2~3편</option><option>4편 이상</option><option>미정</option>
             </select>
           </div>
         </div>
 
         <div class="form-row two-col">
           <div class="form-group">
-            <label>예산 범위</label>
-            <select name="예산_범위">
+            <label for="f-length">희망 영상 길이</label>
+            <select id="f-length" name="희망_영상_길이">
               <option value="">선택해주세요</option>
-              <option>200만원 이하</option>
-              <option>200 ~ 500만원</option>
-              <option>500 ~ 1,000만원</option>
-              <option>1,000만원 이상</option>
+              <option>30초 이내</option><option>30~60초</option>
+              <option>1~3분</option><option>3분 이상</option><option>미정</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-media">활용 예정 매체</label>
+            <select id="f-media" name="활용_매체">
+              <option value="">선택해주세요</option>
+              <option>YouTube</option><option>Instagram / Reels</option>
+              <option>네이버 광고</option><option>병원 홈페이지·DID</option>
+              <option>극장·지하철·옥외광고</option><option>복합 (여러 매체)</option><option>미정</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label for="f-budget">예산 범위</label>
+            <select id="f-budget" name="예산_범위">
+              <option value="">선택해주세요</option>
+              <option>300만원 미만</option><option>300 ~ 500만원</option>
+              <option>500 ~ 1,000만원</option><option>1,000만원 이상</option>
               <option>미정 / 상담 후 결정</option>
             </select>
           </div>
           <div class="form-group">
-            <label>제작 희망 시기</label>
-            <select name="제작_희망_시기">
+            <label for="f-schedule">제작 희망 시기</label>
+            <select id="f-schedule" name="제작_희망_시기">
               <option value="">선택해주세요</option>
-              <option>1개월 이내</option>
-              <option>2 ~ 3개월</option>
-              <option>3개월 이후</option>
-              <option>미정</option>
+              <option>1개월 이내</option><option>2 ~ 3개월</option>
+              <option>3개월 이후</option><option>미정</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row two-col">
+          <div class="form-group">
+            <label for="f-shoot">촬영 희망 여부</label>
+            <select id="f-shoot" name="촬영_희망_여부">
+              <option value="">선택해주세요</option>
+              <option>촬영 있음</option>
+              <option>촬영 없음 (기존 자산 활용)</option>
+              <option>미정 / 제안 받고 싶음</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-assets">기존 사진·영상 보유 여부</label>
+            <select id="f-assets" name="기존_자산_보유">
+              <option value="">선택해주세요</option>
+              <option>사진·영상 모두 있음</option><option>사진만 있음</option>
+              <option>거의 없음</option><option>없음 (새로 촬영 필요)</option>
             </select>
           </div>
         </div>
 
         <div class="form-group">
-          <label>참고한 레퍼런스 영상</label>
-          <input type="text" name="참고_레퍼런스" placeholder="예: 3번 영상, 7번 영상처럼 원장님 출연 스타일로 원합니다">
+          <label for="f-reference">참고한 레퍼런스 영상</label>
+          <input type="text" id="f-reference" name="참고_레퍼런스" placeholder="예: 3번 영상, 7번 영상처럼 원장님 출연 스타일로 원합니다">
         </div>
 
         <div class="form-group">
-          <label>요청 내용 <span class="req">*</span></label>
-          <textarea name="요청_내용" rows="5" placeholder="원하시는 영상 콘셉트, 타깃 환자, 강조하고 싶은 시술이나 병원 강점 등을 자유롭게 적어주세요." required></textarea>
+          <label for="f-reflink">참고 링크</label>
+          <input type="url" id="f-reflink" name="참고_링크" placeholder="https://youtube.com/... 또는 참고하고 싶은 영상 URL">
         </div>
 
-        <div class="form-group check-group">
+        <div class="form-group">
+          <label for="f-content">요청 내용 <span class="req" aria-label="필수">*</span></label>
+          <textarea id="f-content" name="요청_내용" rows="5" placeholder="원하시는 영상 콘셉트, 타깃 환자, 강조하고 싶은 시술이나 병원 강점 등을 자유롭게 적어주세요." required></textarea>
+          <div class="field-error" id="err-content" role="alert"></div>
+        </div>
+
+        <!-- 개인정보 동의 -->
+        <div class="form-group privacy-group">
           <label class="checkbox-label">
-            <input type="checkbox" name="개인정보_동의" required>
-            <span>개인정보 수집 및 이용에 동의합니다. <small>(성명, 연락처, 이메일을 견적 상담 목적으로만 사용합니다)</small></span>
+            <input type="checkbox" id="privacyCheck" name="개인정보_동의" required>
+            <span>개인정보 수집 및 이용에 동의합니다.
+              <button type="button" class="privacy-toggle-btn" id="privacyToggleBtn" aria-expanded="false" aria-controls="privacyDetail">상세 보기 ▾</button>
+            </span>
           </label>
+          <div class="field-error" id="err-privacy" role="alert"></div>
+          <div class="privacy-detail" id="privacyDetail" hidden>
+            <table class="privacy-table">
+              <tbody>
+                <tr><th scope="row">수집 항목</th><td>성명, 연락처, 이메일, 병원명, 진료과목, 요청 내용</td></tr>
+                <tr><th scope="row">이용 목적</th><td>견적 상담 및 제작 문의 응대</td></tr>
+                <tr><th scope="row">보유 기간</th><td>상담 완료 후 1년 (관련 법령에 따름)</td></tr>
+                <tr><th scope="row">동의 거부</th><td>동의를 거부할 수 있으나, 이 경우 견적 상담 서비스 이용이 제한됩니다.</td></tr>
+                <tr><th scope="row">개인정보처리방침</th><td><a href="#" class="text-link">별도 안내 예정</a></td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        <button type="submit" class="submit-btn">견적 요청 보내기</button>
+        <button type="submit" class="submit-btn" id="submitBtn">견적 요청 보내기</button>
       </form>
 
       <div id="formSuccess" class="form-success" style="display:none;">
-        <div class="success-icon">✓</div>
+        <div class="success-icon" aria-hidden="true">✓</div>
         <h3>견적 요청이 접수되었습니다!</h3>
-        <p>영업일 기준 1~2일 내로 연락드리겠습니다.</p>
+        <p>영업일 기준 <strong>1~2일 내</strong>로 연락드리겠습니다.</p>
+        <div class="success-summary" id="successSummary"></div>
+        <p class="success-note">급하신 경우 <strong>riruyaaa@gmail.com</strong>으로 직접 연락주셔도 됩니다.</p>
       </div>
     </div>
   </section>
+
+</main>
+
+<!-- 모바일 하단 고정 버튼 -->
+<div class="mobile-fab" id="mobileFab" aria-label="하단 메뉴">
+  <button class="mobile-fab-btn" id="mobileFabBtn">견적 문의</button>
+</div>
 
 <script src="data.js"></script>
 <script src="app.js"></script>
