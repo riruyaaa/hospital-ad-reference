@@ -61,7 +61,7 @@ body {
   background: none;
 }
 
-main { max-width: 1180px; margin: 0 auto; padding: 24px; }
+main { max-width: 1180px; margin: 0 auto; padding: 24px; background: var(--bg); }
 
 .tab-panel { display: none; }
 .tab-panel.active { display: block; }
