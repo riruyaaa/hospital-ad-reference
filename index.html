@@ -48,89 +48,105 @@
   <!-- 갤러리 탭 -->
   <section id="gallery" class="tab-panel active" role="tabpanel">
 
-    <div class="filter-wrap">
-      <div class="filter-top">
-        <input type="text" id="searchInput" placeholder="제목, 키워드로 검색..." aria-label="검색">
+    <!-- 갤러리 헤더 -->
+    <div class="gal-header">
+      <div class="gal-copy">
+        <p class="gal-label">온블로그 레퍼런스 갤러리</p>
+        <p class="gal-desc">기획, 촬영, AI 제작, 편집까지 — 예산과 목적에 맞는 레퍼런스를 찾아보세요.</p>
+      </div>
+      <div class="gal-filter-row">
+        <input type="text" id="searchInput" placeholder="검색..." aria-label="검색">
         <button class="filter-toggle-btn" id="filterToggleBtn" aria-expanded="false" aria-controls="filterPanel">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 3h13M3 7.5h9M5.5 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg width="14" height="14" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M1 3h13M3 7.5h9M5.5 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           필터
           <span class="filter-badge" id="filterBadge" style="display:none">0</span>
         </button>
         <span id="resultCount" class="result-count" aria-live="polite"></span>
       </div>
-
-      <div class="filter-panel" id="filterPanel" hidden>
-        <div class="filter-grid">
-          <div class="filter-group">
-            <label class="filter-label" for="categoryFilter">진료과목</label>
-            <select id="categoryFilter" aria-label="진료과목 필터"><option value="">전체</option></select>
-          </div>
-          <div class="filter-group">
-            <label class="filter-label" for="typeFilter">제작 유형</label>
-            <select id="typeFilter" aria-label="제작 유형 필터">
-              <option value="">전체</option>
-              <option value="AI 활용 광고">AI 활용 광고</option>
-              <option value="원장님 출연 광고">원장님 출연 광고</option>
-              <option value="일반 광고">일반 광고</option>
-              <option value="타이포·모션">타이포·모션</option>
-              <option value="시술소개 영상">시술소개 영상</option>
-              <option value="참여유도형">참여유도형</option>
-              <option value="브랜딩 영상">브랜딩 영상</option>
-              <option value="개원·티저 광고">개원·티저 광고</option>
-              <option value="옥외·극장 광고">옥외·극장 광고</option>
-              <option value="음악·댄스 광고">음악·댄스 광고</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label class="filter-label" for="formatFilter">영상 형식</label>
-            <select id="formatFilter" aria-label="영상 형식 필터">
-              <option value="">전체</option>
-              <option value="Long-form">Long-form</option>
-              <option value="Shorts">Shorts</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label class="filter-label" for="budgetFilter">예산 범위</label>
-            <select id="budgetFilter" aria-label="예산 범위 필터">
-              <option value="">전체</option>
-              <option value="under300">300만원 미만</option>
-              <option value="300to600">300~600만원</option>
-              <option value="600to1000">600~1,000만원</option>
-              <option value="over1000">1,000만원 이상</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label class="filter-label" for="shootFilter">촬영 여부</label>
-            <select id="shootFilter" aria-label="촬영 여부 필터">
-              <option value="">전체</option>
-              <option value="촬영 없음">촬영 없음 (기존 자산 활용)</option>
-              <option value="촬영 있음">촬영 있음</option>
-            </select>
-          </div>
-        </div>
-        <div class="filter-actions">
-          <button class="filter-reset-btn" id="filterResetBtn">필터 초기화</button>
-        </div>
-      </div>
-
-      <div class="active-filters" id="activeFilters" style="display:none" aria-live="polite"></div>
     </div>
 
-    <div class="section-block">
-      <div class="section-label">
-        <span class="section-dot longform"></span> Long-form
+    <div class="filter-panel" id="filterPanel" hidden>
+      <div class="filter-grid">
+        <div class="filter-group">
+          <label class="filter-label" for="categoryFilter">진료과목</label>
+          <select id="categoryFilter" aria-label="진료과목 필터"><option value="">전체</option></select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label" for="typeFilter">제작 유형</label>
+          <select id="typeFilter" aria-label="제작 유형 필터">
+            <option value="">전체</option>
+            <option value="AI 활용 광고">AI 활용 광고</option>
+            <option value="원장님 출연 광고">원장님 출연 광고</option>
+            <option value="일반 광고">일반 광고</option>
+            <option value="타이포·모션">타이포·모션</option>
+            <option value="시술소개 영상">시술소개 영상</option>
+            <option value="참여유도형">참여유도형</option>
+            <option value="브랜딩 영상">브랜딩 영상</option>
+            <option value="개원·티저 광고">개원·티저 광고</option>
+            <option value="옥외·극장 광고">옥외·극장 광고</option>
+            <option value="음악·댄스 광고">음악·댄스 광고</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label" for="formatFilter">형식</label>
+          <select id="formatFilter" aria-label="영상 형식 필터">
+            <option value="">전체</option>
+            <option value="Long-form">Long-form</option>
+            <option value="Shorts">Shorts</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label" for="budgetFilter">예산</label>
+          <select id="budgetFilter" aria-label="예산 범위 필터">
+            <option value="">전체</option>
+            <option value="under300">300만원 미만</option>
+            <option value="300to600">300~600만원</option>
+            <option value="600to1000">600~1,000만원</option>
+            <option value="over1000">1,000만원 이상</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label" for="shootFilter">촬영</label>
+          <select id="shootFilter" aria-label="촬영 여부 필터">
+            <option value="">전체</option>
+            <option value="촬영 없음">촬영 없음</option>
+            <option value="촬영 있음">촬영 있음</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button class="filter-reset-btn" id="filterResetBtn">필터 초기화</button>
+      </div>
+    </div>
+
+    <div class="active-filters" id="activeFilters" style="display:none" aria-live="polite"></div>
+
+    <!-- Long-form 선반 -->
+    <div class="shelf-section">
+      <div class="shelf-row-label">
+        <span class="section-dot longform"></span>
+        Long-form
         <span id="longformCount" class="section-count"></span>
       </div>
-      <div id="longformGrid" class="card-grid"></div>
+      <div class="shelf-stage">
+        <div class="covers-track" id="longformGrid" role="list" aria-label="Long-form 영상 목록"></div>
+        <div class="shelf-board"></div>
+      </div>
     </div>
 
-    <div class="section-block">
-      <div class="section-label">
-        <span class="section-dot shorts"></span> Shorts
+    <!-- Shorts 선반 -->
+    <div class="shelf-section">
+      <div class="shelf-row-label">
+        <span class="section-dot shorts"></span>
+        Shorts
         <span id="shortsCount" class="section-count"></span>
       </div>
-      <div id="shortsGrid" class="card-grid shorts-grid"></div>
+      <div class="shelf-stage">
+        <div class="covers-track shorts-track" id="shortsGrid" role="list" aria-label="Shorts 영상 목록"></div>
+        <div class="shelf-board"></div>
+      </div>
     </div>
+
   </section>
 
   <!-- 서비스 안내 탭 -->
