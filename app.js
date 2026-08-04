@@ -372,20 +372,20 @@ function renderCards() {
 
   resultCount.textContent = `${filtered.length}개 결과`;
 
-  // Long-form 선반
+  // Long-form 그리드
   longformGrid.innerHTML = '';
   if (longforms.length === 0) {
-    longformGrid.innerHTML = '<div class="shelf-empty">🎬 해당하는 Long-form 영상이 없어요.</div>';
+    longformGrid.innerHTML = '<div class="gal-empty">🎬 해당하는 Long-form 영상이 없어요.</div>';
   } else {
-    longforms.forEach((r, i) => longformGrid.appendChild(makeCover(r, i)));
+    longforms.forEach(r => longformGrid.appendChild(makeFullViewCard(r)));
   }
 
-  // Shorts 선반
+  // Shorts 그리드
   shortsGrid.innerHTML = '';
   if (shorts.length === 0) {
-    shortsGrid.innerHTML = '<div class="shelf-empty">📱 해당하는 Shorts 영상이 없어요.</div>';
+    shortsGrid.innerHTML = '<div class="gal-empty">📱 해당하는 Shorts 영상이 없어요.</div>';
   } else {
-    shorts.forEach((r, i) => shortsGrid.appendChild(makeCover(r, i)));
+    shorts.forEach(r => shortsGrid.appendChild(makeFullViewCard(r)));
   }
 
   document.getElementById('longformCount').textContent = `${longforms.length}개`;
