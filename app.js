@@ -540,66 +540,7 @@ if (topbar && hero) {
   observer.observe(hero);
 }
 
-// ── 전체 목록 탭 ─────────────────────────────────────────────
-const listSearchInput   = document.getElementById('listSearchInput');
-const listCategoryFilter = document.getElementById('listCategoryFilter');
-const listTypeFilter    = document.getElementById('listTypeFilter');
-const listFormatFilter  = document.getElementById('listFormatFilter');
-const listBudgetFilter  = document.getElementById('listBudgetFilter');
-const listviewGrid      = document.getElementById('listviewGrid');
-
-// 진료과목 옵션 동적 생성
-cats.forEach(cat => {
-  const opt = document.createElement('option');
-  opt.value = cat; opt.textContent = cat;
-  listCategoryFilter.appendChild(opt);
-});
-
-function renderListView() {
-  const q   = listSearchInput.value.trim().toLowerCase();
-  const cat = listCategoryFilter.value;
-  const typ = listTypeFilter.value;
-  const fmt = listFormatFilter.value;
-  const bgt = listBudgetFilter.value;
-
-  const filtered = refs.filter(r => {
-    if (!LOCAL_VIDEOS.has(r['No'])) return false;
-    if (cat && r['분류'] !== cat) return false;
-    if (fmt && r['형식'] !== fmt) return false;
-    if (typ && PKG_TYPE_MAP[r['견적 패키지']] !== typ) return false;
-    if (!matchesBudget(r, bgt)) return false;
-    if (q) {
-      const hay = `${r['영상/레퍼런스명'] || ''} ${r['메모/활용 포인트'] || ''} ${r['분류'] || ''} ${r['견적 패키지'] || ''}`.toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
-  });
-
-  document.getElementById('listviewCnt').textContent = `${filtered.length}개`;
-  listviewGrid.innerHTML = '';
-
-  if (filtered.length === 0) {
-    listviewGrid.innerHTML = '<div class="listview-empty">해당하는 영상이 없어요.</div>';
-    return;
-  }
-
-  filtered.forEach(r => listviewGrid.appendChild(makeFullViewCard(r)));
-}
-
-document.getElementById('listResetBtn').addEventListener('click', () => {
-  listSearchInput.value = '';
-  listCategoryFilter.value = '';
-  listTypeFilter.value = '';
-  listFormatFilter.value = '';
-  listBudgetFilter.value = '';
-  renderListView();
-});
-
-[listSearchInput, listCategoryFilter, listTypeFilter, listFormatFilter, listBudgetFilter]
-  .forEach(el => el.addEventListener('input', renderListView));
-
 // ── init ─────────────────────────────────────────────────────
 renderCards();
-renderListView();
 renderPackages();
 renderFAQ();
