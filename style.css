@@ -896,6 +896,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   max-width: 1180px;
 }
 .shelf-section { max-width: 1180px; margin: 0 auto 56px; }
+.gal-section { margin-bottom: 44px; }
 .shelf-row-label {
   display: flex;
   align-items: center;
@@ -904,8 +905,17 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   font-weight: 700;
   letter-spacing: 0.5px;
   color: #555;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
+.gal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.shorts-gal-grid {
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+.gal-empty { grid-column: 1/-1; padding: 40px; color: var(--muted); font-size: 13px; text-align: center; }
 .shelf-stage { position: relative; }
 .covers-track {
   display: flex;
