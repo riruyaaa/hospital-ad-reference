@@ -1104,6 +1104,60 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 .fvc-price { font-size: 12px; color: var(--muted); }
 
 /* ═══════════════════════════════════════
+   전체 목록 탭 (listview)
+═══════════════════════════════════════ */
+.listview-header {
+  margin-bottom: 24px;
+}
+.listview-title-row {
+  display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px;
+}
+.listview-title {
+  font-size: 20px; font-weight: 700; color: var(--text); margin: 0;
+}
+.listview-cnt {
+  font-size: 13px; color: var(--muted); font-weight: 500;
+}
+.listview-controls {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.listview-search {
+  width: 100%; max-width: 380px;
+  padding: 9px 14px; border: 1.5px solid var(--border);
+  border-radius: 8px; font-size: 13px; background: #fff;
+  color: var(--text); font-family: inherit;
+  transition: border-color .15s;
+}
+.listview-search:focus { outline: none; border-color: var(--accent); }
+.listview-filters {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.listview-filters select {
+  padding: 7px 12px; border: 1.5px solid var(--border);
+  border-radius: 8px; font-size: 12px; background: #fff;
+  color: var(--text); font-family: inherit; cursor: pointer;
+  transition: border-color .15s;
+}
+.listview-filters select:focus { outline: none; border-color: var(--accent); }
+.listview-reset-btn {
+  padding: 7px 14px; border: 1.5px solid var(--border);
+  border-radius: 8px; font-size: 12px; font-weight: 600;
+  background: none; color: var(--muted); cursor: pointer;
+  font-family: inherit; transition: background .15s, color .15s;
+}
+.listview-reset-btn:hover { background: #1a1a2e; color: #fff; border-color: #1a1a2e; }
+
+.listview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.listview-empty {
+  grid-column: 1 / -1; text-align: center;
+  padding: 60px 0; color: var(--muted); font-size: 15px;
+}
+
+/* ═══════════════════════════════════════
    영상 라이트박스
 ═══════════════════════════════════════ */
 .video-lightbox {
