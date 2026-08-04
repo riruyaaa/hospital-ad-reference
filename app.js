@@ -210,8 +210,6 @@ function makeFullViewCard(r) {
 }
 
 document.getElementById('fullviewBack').addEventListener('click', closeFullView);
-document.getElementById('longformViewAll').addEventListener('click', () => openFullView('longform'));
-document.getElementById('shortsViewAll').addEventListener('click', () => openFullView('shorts'));
 
 // ESC 키 전역 처리
 document.addEventListener('keydown', e => {
