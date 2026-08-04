@@ -102,42 +102,6 @@ function fmtPriceSimple(r) {
   return `${min.toLocaleString()}~${max ? max.toLocaleString() : '?'}만원`;
 }
 
-// ── 호버: 뷰포트 중앙으로 이동 + 확대 ─────────────────────────
-function applyHover(card) {
-  card.style.animationPlayState = 'paused';
-  card.classList.add('hovered');
-
-  const rect = card.getBoundingClientRect();
-  const cx = window.innerWidth / 2;
-  const cy = window.innerHeight / 2;
-  const dx = cx - (rect.left + rect.width / 2);
-  const dy = cy - (rect.top + rect.height / 2);
-  const scale = card.classList.contains('is-shorts') ? 2.0 : 1.75;
-
-  card.style.transform = `translate(${dx}px, ${dy}px) scale(${scale})`;
-  card.style.zIndex = '500';
-
-  const track = card.closest('.covers-track');
-  if (track) {
-    track.querySelectorAll('.gallery-cover').forEach(s => {
-      if (s !== card) { s.style.opacity = '0.28'; s.style.filter = 'blur(1.5px)'; }
-    });
-  }
-}
-
-function resetHover(card) {
-  card.classList.remove('hovered');
-  card.style.transform = '';
-  card.style.zIndex = '';
-  card.style.animationPlayState = '';
-
-  const track = card.closest('.covers-track');
-  if (track) {
-    track.querySelectorAll('.gallery-cover').forEach(s => {
-      s.style.opacity = ''; s.style.filter = '';
-    });
-  }
-}
 
 // ── 영상 라이트박스 ───────────────────────────────────────────
 let _lbRef = null;
