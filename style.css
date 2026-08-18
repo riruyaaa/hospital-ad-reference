@@ -1278,7 +1278,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   gap: 5px;
   background: var(--accent-soft);
   color: var(--accent);
-  border: 1px solid rgba(79,107,242,.25);
+  border: 1px solid rgba(139,111,94,.25);
   border-radius: 20px;
   padding: 4px 10px;
   font-size: 12px;
@@ -1324,7 +1324,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   padding: 9px 12px;
   background: var(--accent-soft);
   color: var(--accent);
-  border: 1.5px solid rgba(79,107,242,.25);
+  border: 1.5px solid rgba(139,111,94,.25);
   border-radius: 8px;
   font-size: 12px;
   font-weight: 700;
