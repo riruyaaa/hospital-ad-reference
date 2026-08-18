@@ -509,7 +509,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 
 .submit-btn {
   padding: 14px;
-  background: linear-gradient(135deg, #8b6f5e, #6b4e3d);
+  background: linear-gradient(135deg, #8b6f5e, #5c3d2e);
   color: #fff;
   border: none;
   border-radius: 12px;
@@ -529,7 +529,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 .success-icon {
   width: 64px;
   height: 64px;
-  background: linear-gradient(135deg, #8b6f5e, #6b4e3d);
+  background: linear-gradient(135deg, #8b6f5e, #5c3d2e);
   color: #fff;
   font-size: 28px;
   border-radius: 50%;
@@ -1810,7 +1810,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   display: block;
   width: 100%;
   padding: 16px;
-  background: linear-gradient(135deg, #8b6f5e, #6b4e3d);
+  background: linear-gradient(135deg, #8b6f5e, #5c3d2e);
   color: #fff;
   border: none;
   border-radius: 16px;
