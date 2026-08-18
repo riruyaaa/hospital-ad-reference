@@ -1817,7 +1817,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   font-size: 15px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 4px 24px rgba(79,107,242,.45);
+  box-shadow: 0 4px 24px rgba(139,111,94,.35);
   transition: opacity .15s;
 }
 .mobile-fab-btn:hover { opacity: 0.9; }
