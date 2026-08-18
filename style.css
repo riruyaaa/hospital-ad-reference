@@ -246,9 +246,9 @@ main { max-width: 1180px; margin: 0 auto; padding: 24px; background: var(--bg); 
   margin-bottom: 2px;
   width: fit-content;
 }
-.price-tier-badge.tier-basic    { background: #f0f4ff; color: #4f6bf2; }
-.price-tier-badge.tier-standard { background: #4f6bf2; color: #fff; }
-.price-tier-badge.tier-premium  { background: #7c4ff2; color: #fff; }
+.price-tier-badge.tier-basic    { background: #f5ede4; color: #8b6f5e; }
+.price-tier-badge.tier-standard { background: #8b6f5e; color: #fff; }
+.price-tier-badge.tier-premium  { background: #6b4e3d; color: #fff; }
 .price-row {
   display: flex;
   align-items: baseline;
@@ -346,7 +346,7 @@ h2 { font-size: 18px; margin: 28px 0 12px; }
   color: var(--muted);
 }
 .tier-standard .tier-label { color: var(--accent); }
-.tier-premium .tier-label { color: #7c4ff2; }
+.tier-premium .tier-label { color: #6b4e3d; }
 .tier-price {
   font-size: 32px;
   font-weight: 800;
@@ -355,7 +355,7 @@ h2 { font-size: 18px; margin: 28px 0 12px; }
   margin: 4px 0 8px;
 }
 .tier-standard .tier-price { color: var(--accent); }
-.tier-premium .tier-price { color: #7c4ff2; }
+.tier-premium .tier-price { color: #6b4e3d; }
 .tier-list {
   margin: 0;
   padding: 0 0 0 16px;
@@ -509,7 +509,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 
 .submit-btn {
   padding: 14px;
-  background: linear-gradient(135deg, #4f6bf2, #7c4ff2);
+  background: linear-gradient(135deg, #8b6f5e, #6b4e3d);
   color: #fff;
   border: none;
   border-radius: 12px;
@@ -529,7 +529,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 .success-icon {
   width: 64px;
   height: 64px;
-  background: linear-gradient(135deg, #4f6bf2, #7c4ff2);
+  background: linear-gradient(135deg, #8b6f5e, #6b4e3d);
   color: #fff;
   font-size: 28px;
   border-radius: 50%;
@@ -630,7 +630,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   display: flex;
   gap: 16px;
   align-items: flex-start;
-  background: #f0f4ff;
+  background: #f5ede4;
   border-left: 4px solid var(--accent);
   border-radius: var(--radius);
   padding: 22px 24px;
@@ -1311,7 +1311,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   color: #fff;
   letter-spacing: 0.3px;
 }
-.ref-badge.direct { background: #4f6bf2; }
+.ref-badge.direct { background: #8b6f5e; }
 .card-type {
   font-size: 11px;
   color: var(--muted);
@@ -1359,9 +1359,9 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   padding: 2px 8px;
   border-radius: 20px;
 }
-.pkg-badge.tier-basic    { background: #f0f4ff; color: #4f6bf2; }
-.pkg-badge.tier-standard { background: #4f6bf2; color: #fff; }
-.pkg-badge.tier-premium  { background: #7c4ff2; color: #fff; }
+.pkg-badge.tier-basic    { background: #f5ede4; color: #8b6f5e; }
+.pkg-badge.tier-standard { background: #8b6f5e; color: #fff; }
+.pkg-badge.tier-premium  { background: #6b4e3d; color: #fff; }
 
 /* ═══════════════════════════════════════
    패키지 티어 카드 — 상세형
@@ -1392,7 +1392,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   gap: 0;
 }
 .tier-card-e.tier-standard { border-color: var(--accent); box-shadow: 0 4px 24px rgba(79,107,242,.15); }
-.tier-card-e.tier-premium  { border-color: #7c4ff2; }
+.tier-card-e.tier-premium  { border-color: #6b4e3d; }
 .tce-badge {
   position: absolute;
   top: -12px;
@@ -1415,7 +1415,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   margin-bottom: 6px;
 }
 .tier-standard .tce-label { color: var(--accent); }
-.tier-premium .tce-label  { color: #7c4ff2; }
+.tier-premium .tce-label  { color: #6b4e3d; }
 .tce-price {
   font-size: 30px;
   font-weight: 800;
@@ -1424,7 +1424,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   line-height: 1;
 }
 .tier-standard .tce-price { color: var(--accent); }
-.tier-premium .tce-price  { color: #7c4ff2; }
+.tier-premium .tce-price  { color: #6b4e3d; }
 .tce-desc {
   font-size: 13px;
   color: var(--muted);
@@ -1477,8 +1477,8 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   min-height: 46px;
 }
 .tce-cta:hover { background: var(--accent); color: #fff; }
-.tier-premium .tce-cta { border-color: #7c4ff2; color: #7c4ff2; }
-.tier-premium .tce-cta:hover { background: #7c4ff2; color: #fff; }
+.tier-premium .tce-cta { border-color: #6b4e3d; color: #6b4e3d; }
+.tier-premium .tce-cta:hover { background: #6b4e3d; color: #fff; }
 
 /* ═══════════════════════════════════════
    제작 과정
@@ -1619,7 +1619,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
 .about-hero {
   text-align: center;
   padding: 48px 20px 40px;
-  background: linear-gradient(135deg, #f0f4ff 0%, #f5f0ff 100%);
+  background: linear-gradient(135deg, #f5ede4 0%, #f5f0ff 100%);
   border-radius: var(--radius);
   margin-bottom: 40px;
 }
@@ -1810,7 +1810,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   display: block;
   width: 100%;
   padding: 16px;
-  background: linear-gradient(135deg, #4f6bf2, #7c4ff2);
+  background: linear-gradient(135deg, #8b6f5e, #6b4e3d);
   color: #fff;
   border: none;
   border-radius: 16px;
