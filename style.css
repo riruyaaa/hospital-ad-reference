@@ -1391,7 +1391,7 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   flex-direction: column;
   gap: 0;
 }
-.tier-card-e.tier-standard { border-color: var(--accent); box-shadow: 0 4px 24px rgba(79,107,242,.15); }
+.tier-card-e.tier-standard { border-color: var(--accent); box-shadow: 0 4px 24px rgba(139,111,94,.12); }
 .tier-card-e.tier-premium  { border-color: #6b4e3d; }
 .tce-badge {
   position: absolute;
