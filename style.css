@@ -338,7 +338,7 @@ h2 { font-size: 18px; margin: 28px 0 12px; }
   border-radius: 20px;
   letter-spacing: 0.5px;
 }
-.tier-standard { border-color: var(--accent); box-shadow: 0 4px 20px rgba(79,107,242,0.15); }
+.tier-standard { border-color: var(--accent); box-shadow: 0 4px 20px rgba(139,111,94,0.12); }
 .tier-label {
   font-size: 12px;
   font-weight: 800;
