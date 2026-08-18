@@ -1151,10 +1151,9 @@ th { background: var(--accent-soft); color: var(--accent); font-size: 12px; }
   position: relative; aspect-ratio: 16/9;
 }
 .vlb-content.is-shorts .vlb-player-wrap { aspect-ratio: 9/16; }
-.vlb-iframe {
-  position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block;
+.vlb-video {
+  position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: contain;
 }
-.vlb-video { width: 100%; display: block; max-height: 72vh; }
 .vlb-meta {
   margin-top: 14px;
   display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;

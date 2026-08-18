@@ -109,14 +109,14 @@ let _lbRef = null;
 function openLightbox(r) {
   _lbRef = r;
   const lb      = document.getElementById('videoLightbox');
-  const iframe  = document.getElementById('vlbIframe');
+  const video   = document.getElementById('vlbVideo');
   const content = document.getElementById('vlbContent');
   const isShorts = r['형식'] === 'Shorts';
-  const ytId    = r['YouTube ID'];
+  const num     = r['번호'] || r['No'];
 
-  iframe.src = ytId
-    ? `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`
-    : '';
+  video.src = `videos/${num}.mp4`;
+  video.load();
+  video.play().catch(() => {});
   document.getElementById('vlbCat').textContent   = r['분류'] || '';
   document.getElementById('vlbTitle').textContent = r['영상/레퍼런스명'] || '';
   document.getElementById('vlbPrice').textContent = fmtPriceSimple(r);
@@ -127,9 +127,10 @@ function openLightbox(r) {
 }
 
 function closeLightbox() {
-  const lb     = document.getElementById('videoLightbox');
-  const iframe = document.getElementById('vlbIframe');
-  iframe.src = '';
+  const lb    = document.getElementById('videoLightbox');
+  const video = document.getElementById('vlbVideo');
+  video.pause();
+  video.src = '';
   lb.hidden = true;
   _lbRef = null;
   if (document.getElementById('fullviewOverlay').hidden) document.body.style.overflow = '';
